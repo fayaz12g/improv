@@ -1,7 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
+import './App.css';
 
 function App() {
     const [ipAddress, setIpAddress] = useState('');
@@ -17,35 +16,63 @@ function App() {
 
     useEffect(() => {
         if (socket) {
-            socket.on('sessionCreated', ({ sessionId }) => setSessionId(sessionId));
-            socket.on('playerJoined', ({ players }) => setPlayers(players));
+            console.log('Socket connected:', socket);
+            socket.on('sessionCreated', ({ sessionId }) => {
+                console.log('Session created with ID:', sessionId);
+                setSessionId(sessionId);
+            });
+            socket.on('playerJoined', ({ players }) => {
+                console.log('Players joined:', players);
+                setPlayers(players);
+            });
             socket.on('gameStarted', ({ rounds, scripts }) => {
+                console.log('Game started with rounds and scripts:', rounds, scripts);
                 setRounds(rounds);
                 setScripts(scripts);
                 setGameStarted(true);
             });
-            socket.on('updateLine', ({ line }) => setCurrentLine(line));
+            socket.on('updateLine', ({ line }) => {
+                console.log('Line updated:', line);
+                setCurrentLine(line);
+            });
             socket.on('updatePoints', ({ points }) => {
+                console.log('Points updated:', points);
                 // Update points
             });
         }
     }, [socket]);
 
     const connectToServer = () => {
+        console.log('Connecting to server at:', ipAddress);
         const newSocket = io(`http://${ipAddress}:3000`);
         setSocket(newSocket);
     };
 
     const createSession = () => {
-        socket.emit('createSession');
+        if (socket) {
+            console.log('Creating session...');
+            socket.emit('createSession');
+        } else {
+            console.log('Socket not connected.');
+        }
     };
 
     const joinSession = () => {
-        socket.emit('joinSession', { sessionId, playerName });
+        if (socket && sessionId && playerName) {
+            console.log(`Joining session ${sessionId} as ${playerName}...`);
+            socket.emit('joinSession', { sessionId, playerName });
+        } else {
+            console.log('Socket not connected or session ID/player name missing.');
+        }
     };
 
     const startGame = () => {
-        socket.emit('startGame', { sessionId, rounds });
+        if (socket) {
+            console.log(`Starting game for session ${sessionId} with ${rounds} rounds...`);
+            socket.emit('startGame', { sessionId, rounds });
+        } else {
+            console.log('Socket not connected.');
+        }
     };
 
     const nextLine = () => {
@@ -53,7 +80,12 @@ function App() {
     };
 
     const guessAdlibber = (guess) => {
-        socket.emit('guessAdlibber', { sessionId, guess });
+        if (socket) {
+            console.log(`Guessing adlibber in session ${sessionId}: ${guess}`);
+            socket.emit('guessAdlibber', { sessionId, guess });
+        } else {
+            console.log('Socket not connected.');
+        }
     };
 
     return (

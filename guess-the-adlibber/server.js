@@ -1,11 +1,10 @@
 const express = require('express');
 const http = require('http');
-const socketIo = require('socket.io');
-const fetch = require('node-fetch');
+const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = new Server(server);
 
 const PORT = 3000;
 let sessions = {};
@@ -63,6 +62,7 @@ function updatePoints(sessionId, guess) {
 }
 
 async function fetchScripts() {
+    const fetch = (await import('node-fetch')).default;
     const response = await fetch('https://raw.githubusercontent.com/fayaz12g/gta/main/scripts.json');
     return response.json();
 }
