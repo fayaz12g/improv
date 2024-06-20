@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/improv/static/css/main.cdfc08fe.css",
+    "main.js": "/improv/static/js/main.8d14101f.js",
+    "static/js/453.288ee4bb.chunk.js": "/improv/static/js/453.288ee4bb.chunk.js",
+    "static/media/logo.svg": "/improv/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/improv/index.html",
+    "main.cdfc08fe.css.map": "/improv/static/css/main.cdfc08fe.css.map",
+    "main.8d14101f.js.map": "/improv/static/js/main.8d14101f.js.map",
+    "453.288ee4bb.chunk.js.map": "/improv/static/js/453.288ee4bb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cdfc08fe.css",
+    "static/js/main.8d14101f.js"
+  ]
+}
