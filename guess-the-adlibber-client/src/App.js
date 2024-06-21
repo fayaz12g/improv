@@ -17,14 +17,20 @@ function App() {
     useEffect(() => {
         if (socket) {
             console.log('Socket connected:', socket);
+            socket.on('connect', () => {
+                console.log('Successfully connected to the server');
+            });
             socket.on('sessionCreated', ({ sessionId }) => {
                 console.log('Session created with ID:', sessionId);
-                setSessionId(sessionId);
+                const shortSessionId = sessionId.substr(0, 4).toUpperCase();
+                setSessionId(shortSessionId);
             });
             socket.on('playerJoined', ({ players }) => {
-                console.log('Players joined:', players);
-                setPlayers(players);
-            });
+              console.log('Players joined:', players);
+              setPlayers(players);
+          });
+          
+
             socket.on('gameStarted', ({ rounds, scripts }) => {
                 console.log('Game started with rounds and scripts:', rounds, scripts);
                 setRounds(rounds);
@@ -37,14 +43,30 @@ function App() {
             });
             socket.on('updatePoints', ({ points }) => {
                 console.log('Points updated:', points);
-                // Update points
+                // Update points logic
+            });
+            socket.on('disconnect', () => {
+                console.log('Disconnected from the server');
+            });
+            socket.on('connect_error', (err) => {
+                console.error('Connection error:', err);
             });
         }
     }, [socket]);
 
     const connectToServer = () => {
-        console.log('Connecting to server at:', ipAddress);
-        const newSocket = io(`http://${ipAddress}:3000`);
+        const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        const url = `${protocol}://${ipAddress}:3000`;
+        console.log('Connecting to server at:', url);
+        const newSocket = io(url, {
+            transports: ['websocket'],
+        });
+        newSocket.on('connect', () => {
+            console.log('Connected to server:', newSocket.id);
+        });
+        newSocket.on('connect_error', (err) => {
+            console.error('Failed to connect to server:', err);
+        });
         setSocket(newSocket);
     };
 
@@ -56,15 +78,17 @@ function App() {
             console.log('Socket not connected.');
         }
     };
-
+    
     const joinSession = () => {
-        if (socket && sessionId && playerName) {
-            console.log(`Joining session ${sessionId} as ${playerName}...`);
-            socket.emit('joinSession', { sessionId, playerName });
-        } else {
-            console.log('Socket not connected or session ID/player name missing.');
-        }
-    };
+      if (socket && sessionId && playerName) {
+          console.log(`Joining session ${sessionId} as ${playerName}...`);
+          socket.emit('joinSession', { sessionId: sessionId.toUpperCase(), playerName }); // Use the short session ID
+          setRole('player'); // Update role to 'player' after joining
+      } else {
+          console.log('Socket not connected or session ID/player name missing.');
+      }
+  };
+  
 
     const startGame = () => {
         if (socket) {
@@ -134,9 +158,15 @@ function App() {
                     <h2>Player Screen</h2>
                     <input
                         type="text"
+                        value={sessionId}
+                        onChange={(e) => setSessionId(e.target.value)}
+                        placeholder="Enter Session ID"
+                    />
+                    <input
+                        type="text"
                         value={playerName}
                         onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Enter your name"
+                        placeholder="Enter Your Name"
                     />
                     <button onClick={joinSession}>Join Session</button>
                     {gameStarted && (

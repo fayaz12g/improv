@@ -1,40 +1,52 @@
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
-const http = require('http');
-const { Server } = require('socket.io');
+const socketIO = require('socket.io');
 
 const app = express();
-const server = http.createServer(app);
-const io = new Server(server);
 
-const PORT = 3000;
+// Update these paths to point to your SSL certificate and key files
+const options = {
+    key: fs.readFileSync('./privkey.pem'),
+    cert: fs.readFileSync('./fullchain.pem')
+};
+
+const server = https.createServer(options, app);
+const io = socketIO(server);
+
+app.use(express.static('build'));
+
 let sessions = {};
 
-app.use(express.static('public'));
-
 io.on('connection', (socket) => {
-    console.log('A user connected:', socket.id);
+    console.log('New client connected:', socket.id);
 
     socket.on('createSession', () => {
-        const sessionId = generateSessionId();
-        sessions[sessionId] = { host: socket.id, players: [], points: {} };
+        const sessionId = Math.random().toString(36).substring(2, 15);
+        const shortSessionId = sessionId.substr(0, 4).toUpperCase();
+        sessions[shortSessionId] = { sessionId, players: [] }; // Store with shortSessionId as the key
         socket.join(sessionId);
-        socket.emit('sessionCreated', { sessionId });
+        socket.emit('sessionCreated', { sessionId: shortSessionId });
+        console.log('Session created with ID:', sessionId);
     });
+    
 
     socket.on('joinSession', ({ sessionId, playerName }) => {
-        if (sessions[sessionId]) {
-            sessions[sessionId].players.push({ id: socket.id, name: playerName });
-            sessions[sessionId].points[socket.id] = 0;
-            socket.join(sessionId);
-            io.to(sessionId).emit('playerJoined', { players: sessions[sessionId].players });
+        if (sessions[sessionId]) { // Check against shortSessionId
+            sessions[sessionId].players.push({ name: playerName, socketId: socket.id, points: 0 });
+            socket.join(sessions[sessionId].sessionId); // Join the full sessionId room
+            io.to(sessions[sessionId].sessionId).emit('playerJoined', { players: sessions[sessionId].players });
+            console.log('Player joined session:', sessionId, playerName);
         } else {
             socket.emit('error', 'Session not found');
         }
     });
+    
 
-    socket.on('startGame', async ({ sessionId, rounds }) => {
-        const scripts = await fetchScripts();
-        io.to(sessionId).emit('gameStarted', { rounds, scripts });
+    socket.on('startGame', ({ sessionId, rounds }) => {
+        // Handle starting game logic
+        io.to(sessionId).emit('gameStarted', { rounds, scripts: [] });
+        console.log('Game started for session:', sessionId);
     });
 
     socket.on('nextLine', ({ sessionId, line }) => {
@@ -42,31 +54,16 @@ io.on('connection', (socket) => {
     });
 
     socket.on('guessAdlibber', ({ sessionId, guess }) => {
-        const points = updatePoints(sessionId, guess);
-        io.to(sessionId).emit('updatePoints', { points });
+        // Handle guessing logic and update points
+        io.to(sessionId).emit('updatePoints', { points: '1' });
     });
 
     socket.on('disconnect', () => {
-        console.log('A user disconnected:', socket.id);
-        // Handle player disconnection
+        console.log('Client disconnected:', socket.id);
     });
 });
 
-function generateSessionId() {
-    return Math.random().toString(36).substring(2, 15);
-}
-
-function updatePoints(sessionId, guess) {
-    // Implement point updating logic
-    return sessions[sessionId].points;
-}
-
-async function fetchScripts() {
-    const fetch = (await import('node-fetch')).default;
-    const response = await fetch('https://raw.githubusercontent.com/fayaz12g/gta/main/scripts.json');
-    return response.json();
-}
-
+const PORT = 3000;
 server.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server listening on port ${PORT}`);
 });
