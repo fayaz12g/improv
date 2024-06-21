@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/improv/static/css/main.cdfc08fe.css",
-    "main.js": "/improv/static/js/main.2e9e4cc6.js",
+    "main.js": "/improv/static/js/main.abda8a8d.js",
     "static/js/453.288ee4bb.chunk.js": "/improv/static/js/453.288ee4bb.chunk.js",
     "index.html": "/improv/index.html",
     "main.cdfc08fe.css.map": "/improv/static/css/main.cdfc08fe.css.map",
-    "main.2e9e4cc6.js.map": "/improv/static/js/main.2e9e4cc6.js.map",
+    "main.abda8a8d.js.map": "/improv/static/js/main.abda8a8d.js.map",
     "453.288ee4bb.chunk.js.map": "/improv/static/js/453.288ee4bb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cdfc08fe.css",
-    "static/js/main.2e9e4cc6.js"
+    "static/js/main.abda8a8d.js"
   ]
 }
