@@ -1,233 +1,642 @@
 [
+  {
+    "script_id": 1,
+    "dialogue": [
+      {"speaker": "2", "text": "Hello, how are you today?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Wait what? Why?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I like cupcakes."}
+    ]
+  },
+  {
+    "script_id": 2,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Why would you say that?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's a little racist..."},
+      {"speaker": "3", "text": "I don't think we should be friends anymore because of that."}
+    ]
+  },
+  {
+    "script_id": 3,
+    "dialogue": [
+      {"speaker": "3", "text": "Did you watch the game last night?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "How could you say that?"},
+      {"speaker": "3", "text": "Well you know what they say..."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 4,
+    "dialogue": [
+      {"speaker": "2", "text": "I just got back from the doctor..."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "That's not even physically possible!"},
+      {"speaker": "2", "text": "I think I need a second opinion."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 5,
+    "dialogue": [
+      {"speaker": "3", "text": "What's your favorite animal?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I've never heard of that before."},
+      {"speaker": "3", "text": "Is it endangered?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 6,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's illegal in at least 12 states!"},
+      {"speaker": "3", "text": "I'm calling the police."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Oh, never mind then."}
+    ]
+  },
+  {
+    "script_id": 7,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your secret talent?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Wow, can you show us?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm both impressed and terrified."}
+    ]
+  },
+  {
+    "script_id": 8,
+    "dialogue": [
+      {"speaker": "3", "text": "I'm thinking of changing careers."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not even a real job!"},
+      {"speaker": "3", "text": "Maybe you're right..."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 9,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's a war crime."},
+      {"speaker": "3", "text": "No, it's just frowned upon in polite society."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Oh, well that makes it okay then."}
+    ]
+  },
+  {
+    "script_id": 10,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your go-to pickup line?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Does that actually work?"},
+      {"speaker": "2", "text": "I'm simultaneously repulsed and intrigued."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 11,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could have any superpower, what would it be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not a superpower, that's just weird."},
+      {"speaker": "3", "text": "I'd watch that movie though."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 12,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's cultural appropriation."},
+      {"speaker": "3", "text": "No, it's just misunderstood art."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I stand corrected."}
+    ]
+  },
+  {
+    "script_id": 13,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your biggest fear?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "That's oddly specific."},
+      {"speaker": "2", "text": "Have you considered therapy?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 14,
+    "dialogue": [
+      {"speaker": "3", "text": "What's your favorite conspiracy theory?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I think I saw a documentary about that once."},
+      {"speaker": "3", "text": "Wasn't that just a fever dream?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 15,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not how physics works!"},
+      {"speaker": "3", "text": "Maybe in an alternate universe..."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I need to lie down."}
+    ]
+  },
+  {
+    "script_id": 16,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your life motto?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Isn't that from a cartoon?"},
+      {"speaker": "2", "text": "No, I think it's Shakespeare."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 17,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could invent anything, what would it be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Pretty sure that violates the laws of thermodynamics."},
+      {"speaker": "3", "text": "And probably several international treaties."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 18,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not what I expected when I woke up this morning."},
+      {"speaker": "3", "text": "Is it too late to go back to bed?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I guess we're doing this then."}
+    ]
+  },
+  {
+    "script_id": 19,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your strangest hobby?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Is that even legal?"},
+      {"speaker": "2", "text": "I'm not sure I want to know more..."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 20,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could time travel, where would you go?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Pretty sure that would cause a paradox."},
+      {"speaker": "3", "text": "Or the best party ever."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 21,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm not sure that's anatomically correct."},
+      {"speaker": "3", "text": "It is for octopi."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Learn something new every day, I guess."}
+    ]
+  },
+  {
+    "script_id": 22,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your best pick-up line?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "I think that only works on Mars."},
+      {"speaker": "2", "text": "Or in very specific bars in Tokyo."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 23,
+    "dialogue": [
+      {"speaker": "3", "text": "What's your most useless talent?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's... oddly specific."},
+      {"speaker": "3", "text": "I bet there's a world championship for that."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 24,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your dream job?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Is that even a real profession?"},
+      {"speaker": "2", "text": "Sounds more like a nightmare."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 25,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could be any animal, what would you be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's extinct."},
+      {"speaker": "3", "text": "Or maybe it never existed?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 26,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not how magnets work!"},
+      {"speaker": "3", "text": "Are you sure? It sounds plausible."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I need to rethink everything I know about physics."}
+    ]
+  },
+  {
+    "script_id": 27,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your favorite holiday tradition?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "I think that's outlawed in most countries."},
+      {"speaker": "2", "text": "But it does sound festive!"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 28,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could have dinner with any historical figure, who would it be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Wouldn't they be a bit... decomposed?"},
+      {"speaker": "3", "text": "I guess it depends on your definition of 'dinner'."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 29,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Is that even possible in this dimension?"},
+      {"speaker": "3", "text": "Only on Tuesdays, I think."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "We should probably alert the authorities."}
+    ]
+  },
+  {
+    "script_id": 30,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your favorite book?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "I don't think that's ever been written."},
+      {"speaker": "2", "text": "Maybe it's from the future?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 31,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could be a superhero, what would your power be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's more of a supervillain power, isn't it?"},
+      {"speaker": "3", "text": "I'd read that comic book."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 32,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's not how evolution works."},
+      {"speaker": "3", "text": "Maybe in a parallel universe?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Darwin would be rolling in his grave."}
+    ]
+  },
     {
-      "script_id": 1,
+      "script_id": 33,
       "dialogue": [
-        {"speaker": "2", "text": "Hello, how are you today?"},
+        {"speaker": "2", "text": "What's your favorite childhood memory?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "Wait what? Why?"},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I like cupcakes."}
-      ]
-    },
-    {
-      "script_id": 2,
-      "dialogue": [
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "Why would you say that?"},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's a little racist..."},
-        {"speaker": "3", "text": "I don't think we should be friends anymore because of that."}
-      ]
-    },
-    {
-      "script_id": 3,
-      "dialogue": [
-        {"speaker": "3", "text": "Did you watch the game last night?"},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "How could you say that?"},
-        {"speaker": "3", "text": "Well you know what they say..."},
+        {"speaker": "3", "text": "That sounds traumatizing."},
+        {"speaker": "2", "text": "I think you might need therapy."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 4,
+      "script_id": 34,
       "dialogue": [
-        {"speaker": "2", "text": "I just got back from the doctor..."},
+        {"speaker": "3", "text": "If you could create a new holiday, what would it be?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "That's not even physically possible!"},
-        {"speaker": "2", "text": "I think I need a second opinion."},
+        {"speaker": "2", "text": "I'm not sure that's something to celebrate."},
+        {"speaker": "3", "text": "It could be fun with the right crowd."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 5,
+      "script_id": 35,
       "dialogue": [
-        {"speaker": "3", "text": "What's your favorite animal?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I've never heard of that before."},
-        {"speaker": "3", "text": "Is it endangered?"},
+        {"speaker": "2", "text": "Is that even scientifically possible?"},
+        {"speaker": "3", "text": "Only in certain parts of Florida, I think."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "We should probably keep this to ourselves."}
+      ]
+    },
+    {
+      "script_id": 36,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your spirit animal?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I don't think that's a real animal."},
+        {"speaker": "2", "text": "Maybe it's from another dimension?"},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 6,
+      "script_id": 37,
       "dialogue": [
+        {"speaker": "3", "text": "If you could change one law, what would it be?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's illegal in at least 12 states!"},
-        {"speaker": "3", "text": "I'm calling the police."},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "Oh, never mind then."}
-      ]
-    },
-    {
-      "script_id": 7,
-      "dialogue": [
-        {"speaker": "2", "text": "What's your secret talent?"},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "Wow, can you show us?"},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I'm both impressed and terrified."}
-      ]
-    },
-    {
-      "script_id": 8,
-      "dialogue": [
-        {"speaker": "3", "text": "I'm thinking of changing careers."},
-        {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's not even a real job!"},
-        {"speaker": "3", "text": "Maybe you're right..."},
+        {"speaker": "2", "text": "I'm pretty sure that's against human rights."},
+        {"speaker": "3", "text": "Or maybe it's just ahead of its time?"},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 9,
+      "script_id": 38,
       "dialogue": [
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I'm pretty sure that's a war crime."},
-        {"speaker": "3", "text": "No, it's just frowned upon in polite society."},
+        {"speaker": "2", "text": "That's not how the food chain works!"},
+        {"speaker": "3", "text": "Nature finds a way, I guess."},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "Oh, well that makes it okay then."}
+        {"speaker": "2", "text": "David Attenborough would have a field day with this."}
       ]
     },
     {
-      "script_id": 10,
+      "script_id": 39,
       "dialogue": [
-        {"speaker": "2", "text": "What's your go-to pickup line?"},
+        {"speaker": "2", "text": "What's your ideal vacation?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "Does that actually work?"},
-        {"speaker": "2", "text": "I'm simultaneously repulsed and intrigued."},
+        {"speaker": "3", "text": "I don't think that place exists."},
+        {"speaker": "2", "text": "Sounds more like a fever dream."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 11,
+      "script_id": 40,
       "dialogue": [
-        {"speaker": "3", "text": "If you could have any superpower, what would it be?"},
+        {"speaker": "3", "text": "If you could master any skill instantly, what would it be?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's not a superpower, that's just weird."},
-        {"speaker": "3", "text": "I'd watch that movie though."},
+        {"speaker": "2", "text": "Is that even considered a skill?"},
+        {"speaker": "3", "text": "It could be useful... somehow."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 12,
+      "script_id": 41,
       "dialogue": [
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I'm pretty sure that's cultural appropriation."},
-        {"speaker": "3", "text": "No, it's just misunderstood art."},
+        {"speaker": "2", "text": "That's not how gravity works!"},
+        {"speaker": "3", "text": "Maybe on the moon?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I stand corrected."}
+        {"speaker": "2", "text": "Newton is probably rolling in his grave right now."}
       ]
     },
     {
-      "script_id": 13,
+      "script_id": 42,
       "dialogue": [
-        {"speaker": "2", "text": "What's your biggest fear?"},
+        {"speaker": "2", "text": "What's your biggest pet peeve?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "That's oddly specific."},
-        {"speaker": "2", "text": "Have you considered therapy?"},
+        {"speaker": "3", "text": "That's... oddly specific."},
+        {"speaker": "2", "text": "I think that says more about you than others."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 14,
+      "script_id": 43,
       "dialogue": [
-        {"speaker": "3", "text": "What's your favorite conspiracy theory?"},
+        {"speaker": "3", "text": "If you could bring back any extinct animal, which would it be?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I think I saw a documentary about that once."},
-        {"speaker": "3", "text": "Wasn't that just a fever dream?"},
+        {"speaker": "2", "text": "I don't think that ever existed."},
+        {"speaker": "3", "text": "Jurassic Park was just a movie, you know."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 15,
+      "script_id": 44,
       "dialogue": [
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's not how physics works!"},
-        {"speaker": "3", "text": "Maybe in an alternate universe..."},
+        {"speaker": "2", "text": "That's not how the internet works!"},
+        {"speaker": "3", "text": "Maybe in the darkest corners of the web..."},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I need to lie down."}
+        {"speaker": "2", "text": "I think we need to alert the cyber police."}
       ]
     },
     {
-      "script_id": 16,
+      "script_id": 45,
       "dialogue": [
-        {"speaker": "2", "text": "What's your life motto?"},
+        {"speaker": "2", "text": "What's your favorite conspiracy theory?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "Isn't that from a cartoon?"},
-        {"speaker": "2", "text": "No, I think it's Shakespeare."},
+        {"speaker": "3", "text": "I think you just invented a new one."},
+        {"speaker": "2", "text": "Should we be wearing tinfoil hats?"},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 17,
+      "script_id": 46,
       "dialogue": [
-        {"speaker": "3", "text": "If you could invent anything, what would it be?"},
+        {"speaker": "3", "text": "If you could have any fictional technology, what would it be?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "Pretty sure that violates the laws of thermodynamics."},
-        {"speaker": "3", "text": "And probably several international treaties."},
+        {"speaker": "2", "text": "I'm pretty sure that violates several laws of physics."},
+        {"speaker": "3", "text": "And probably a few ethical guidelines too."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 18,
+      "script_id": 47,
       "dialogue": [
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's not what I expected when I woke up this morning."},
-        {"speaker": "3", "text": "Is it too late to go back to bed?"},
+        {"speaker": "2", "text": "That's not how time works!"},
+        {"speaker": "3", "text": "Maybe in a parallel universe?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I guess we're doing this then."}
+        {"speaker": "2", "text": "Einstein would have a fit if he heard this."}
       ]
     },
     {
-      "script_id": 19,
+      "script_id": 48,
       "dialogue": [
-        {"speaker": "2", "text": "What's your strangest hobby?"},
+        {"speaker": "2", "text": "What's your most embarrassing moment?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "Is that even legal?"},
-        {"speaker": "2", "text": "I'm not sure I want to know more..."},
+        {"speaker": "3", "text": "How are you even alive after that?"},
+        {"speaker": "2", "text": "I think I'm embarrassed just hearing about it."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 20,
+      "script_id": 49,
       "dialogue": [
-        {"speaker": "3", "text": "If you could time travel, where would you go?"},
+        {"speaker": "3", "text": "If you could create a new planet, what would it be like?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "Pretty sure that would cause a paradox."},
-        {"speaker": "3", "text": "Or the best party ever."},
+        {"speaker": "2", "text": "I don't think that's how planets work."},
+        {"speaker": "3", "text": "NASA might want to hear about this."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 21,
+      "script_id": 50,
       "dialogue": [
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "I'm not sure that's anatomically correct."},
-        {"speaker": "3", "text": "It is for octopi."},
+        {"speaker": "2", "text": "That's not how evolution works!"},
+        {"speaker": "3", "text": "Maybe after a few million years..."},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "Learn something new every day, I guess."}
+        {"speaker": "2", "text": "Darwin is probably face-palming in his grave."}
       ]
     },
     {
-      "script_id": 22,
+      "script_id": 51,
       "dialogue": [
-        {"speaker": "2", "text": "What's your best pick-up line?"},
+        {"speaker": "2", "text": "What's your biggest irrational fear?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "3", "text": "I think that only works on Mars."},
-        {"speaker": "2", "text": "Or in very specific bars in Tokyo."},
+        {"speaker": "3", "text": "I think that fear might be pretty rational, actually."},
+        {"speaker": "2", "text": "Now I'm scared too."},
         {"speaker": "1", "text": "ADLIB"}
       ]
     },
     {
-      "script_id": 23,
+      "script_id": 52,
       "dialogue": [
-        {"speaker": "3", "text": "What's your most useless talent?"},
+        {"speaker": "3", "text": "If you could invent a new sport, what would it be?"},
         {"speaker": "1", "text": "ADLIB"},
-        {"speaker": "2", "text": "That's... oddly specific."},
-        {"speaker": "3", "text": "I bet there's a world championship for that."},
+        {"speaker": "2", "text": "I'm pretty sure that's just legalized violence."},
+        {"speaker": "3", "text": "Or maybe the next Olympic sensation?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 53,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how chemistry works!"},
+        {"speaker": "3", "text": "Unless we're in a Breaking Bad episode..."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to call poison control."}
+      ]
+    },
+    {
+      "script_id": 54,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your strangest dream?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I think Freud would have a field day with that."},
+        {"speaker": "2", "text": "Maybe lay off the cheese before bed?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 55,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could create a new element, what properties would it have?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I don't think the periodic table works that way."},
+        {"speaker": "3", "text": "Chemistry just got a lot more interesting."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 56,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how the human body works!"},
+        {"speaker": "3", "text": "Maybe in a sci-fi movie..."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to alert the medical community."}
+      ]
+    },
+    {
+      "script_id": 57,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your favorite mythical creature?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I don't think that's in any mythology I know."},
+        {"speaker": "2", "text": "Sounds like a Pokemon gone wrong."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 58,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could design a new social media platform, what would it be like?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm not sure that's entirely legal."},
+        {"speaker": "3", "text": "Or ethical. Or sane."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 59,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how weather works!"},
+        {"speaker": "3", "text": "Climate change is getting weirder by the day."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to alert the meteorologists."}
+      ]
+    },
+    {
+      "script_id": 60,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your idea of a perfect day?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "That sounds more like a fever dream."},
+        {"speaker": "2", "text": "I'm not sure that's physically possible in 24 hours."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 61,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could add one subject to school curricula, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm not sure that's appropriate for children."},
+        {"speaker": "3", "text": "Or adults, for that matter."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 62,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how the economy works!"},
+        {"speaker": "3", "text": "I think you just invented a new economic theory."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Nobel Prize in Economics, here we come."}
+      ]
+    },
+    {
+      "script_id": 63,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your most useless talent?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I'm not sure that qualifies as a talent."},
+        {"speaker": "2", "text": "More like a cry for help."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 64,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could make one species intelligent like humans, which would you choose?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think that's how most horror movies start."},
+        {"speaker": "3", "text": "Or the next step in evolution?"},
         {"speaker": "1", "text": "ADLIB"}
       ]
     }
   ]
-  
