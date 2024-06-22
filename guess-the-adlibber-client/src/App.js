@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
+import './title.png';
+import titleImage from './title.png';
+
 
 function App() {
     const [ipAddress, setIpAddress] = useState('');
@@ -155,20 +158,26 @@ function App() {
             <h2>Player Screen</h2>
             {!joinedSession ? (
                 <>
-                    <input
-                        type="text"
-                        value={sessionId}
-                        onChange={(e) => setSessionId(e.target.value)}
-                        placeholder="Enter Session ID"
-                    />
-                    <input
-                        type="text"
-                        value={playerName}
-                        onChange={(e) => setPlayerName(e.target.value)}
-                        placeholder="Enter Your Name"
-                    />
-                    <button onClick={joinSession}>Join Session</button>
-                </>
+                <div>
+                  <input
+                    type="text"
+                    value={sessionId}
+                    onChange={(e) => setSessionId(e.target.value)}
+                    placeholder="Enter Session ID"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    value={playerName}
+                    onChange={(e) => setPlayerName(e.target.value)}
+                    placeholder="Enter Your Name"
+                  />
+                </div>
+                <div>
+                  <button onClick={joinSession}>Join Session</button>
+                </div>
+              </>              
             ) : !gameStarted ? (
                 <div>
                     <h3>Joined Session: {sessionId}</h3>
@@ -222,7 +231,10 @@ function App() {
         <div className="App">
             {!socket ? (
                 <div>
-                    <h2>Enter Server IP Address</h2>
+                    <div className="centered-image-container">
+                    <img src="%PUBLIC_URL%/title.png" alt="Title" className="centered-image" />
+                    </div>
+                    <h2>Connect to a server:</h2>
                     <input type="text" value={ipAddress} onChange={(e) => setIpAddress(e.target.value)} />
                     <button onClick={connectToServer}>Connect</button>
                 </div>

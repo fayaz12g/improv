@@ -1,3 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+body {
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #F08080; /* Light coral color */
+  background-image: radial-gradient(circle, #ffffff 20%, transparent 0); /* Adjust the percentage for dot size */
+  background-size: 30px 30px; /* Adjusted background size */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+/* App Container */
+.App {
+  text-align: center;
+  padding: 20px;
+  color: #333; /* Darker text color for contrast */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(63, 14, 14, 0.74); /* Slightly transparent background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  padding: 40px;
+}
+
+/* Headers */
+h2, h3, h4 {
+  margin: 20px 0;
+  color: #ffffff; /* White color for better visibility on coral background */
+}
+
+/* Inputs */
+input[type="text"], input[type="number"] {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+  font-size: 16px;
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #e58a00;
+  color: white;
+  font-size: 16px;
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000; /* Outline effect */
+}
+
+button:hover {
+  background-color: #8e5808;
+}
+
+/* Lists */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+
 
 .App-logo {
   height: 40vmin;
@@ -34,51 +115,13 @@
   }
 }
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f4f4f4;
+
+.centered-image-container {
+  display: flex;
+  justify-content: center;
 }
 
-.App {
-  text-align: center;
-  padding: 20px;
-}
-
-h2, h3, h4 {
-  margin: 20px 0;
-}
-
-input[type="text"], input[type="number"] {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 200px;
-  font-size: 16px;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007BFF;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin: 10px 0;
+.centered-image {
+  max-width: 20vw; /* Set maximum width relative to viewport width */
+  height: auto; /* Maintain aspect ratio */
 }
