@@ -38,10 +38,10 @@ function App() {
             socket.on('playerJoined', ({ players }) => {
                 setPlayers(players);
             });
-            socket.on('gameStarted', ({ rounds, roles }) => {
+            socket.on('gameStarted', ({ rounds, roles, currentround }) => {
                 setRounds(rounds);
                 setGameStarted(true);
-                setCurrentRound(1);
+                setCurrentRound(currentround);
                 
                 // Initialize leaderboard
                 const newLeaderboard = {};

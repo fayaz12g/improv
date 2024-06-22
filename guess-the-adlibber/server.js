@@ -124,7 +124,8 @@ function startRound(sessionId) {
 
     io.to(sessionId).emit('gameStarted', { 
         rounds: session.rounds, 
-        roles: session.roles
+        roles: session.roles,
+        currentround: session.currentRound
     });
 
     // Start the first line for this round
