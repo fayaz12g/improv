@@ -33,7 +33,9 @@ io.on('connection', (socket) => {
             currentScript: null,
             currentLineIndex: 0,
             roles: {},
-            currentSpeaker: null
+            currentSpeaker: null,
+            currentRound: 0, // Initialize current round
+            rounds: 0 // Initialize total rounds (to be set later)
         };
         socket.join(shortSessionId);
         socket.emit('sessionCreated', { sessionId: shortSessionId });
@@ -54,32 +56,8 @@ io.on('connection', (socket) => {
     socket.on('startGame', ({ sessionId, rounds }) => {
         console.log(`Starting game for session ${sessionId} with ${rounds} rounds`);
         if (sessions[sessionId] && sessions[sessionId].players.length === 4) {
-            const roles = ['Guesser', 'Speaker 1', 'Speaker 2', 'Speaker 3'];
-            const shuffledRoles = roles.sort(() => Math.random() - 0.5);
-            
-            sessions[sessionId].roles = {};
-            sessions[sessionId].players.forEach((player, index) => {
-                sessions[sessionId].roles[player.socketId] = shuffledRoles[index];
-            });
-    
-            console.log('Roles assigned:', sessions[sessionId].roles);
-    
-            // Choose a random script
-            const randomScriptIndex = Math.floor(Math.random() * scripts.length);
-            sessions[sessionId].currentScript = scripts[randomScriptIndex];
-            sessions[sessionId].currentLineIndex = 0;
-    
-            console.log('Selected script:', sessions[sessionId].currentScript);
-    
-            io.to(sessionId).emit('gameStarted', { 
-                rounds, 
-                roles: sessions[sessionId].roles
-            });
-    
-            // Start the first line
-            nextLine(sessionId);
-    
-            console.log('Game started for session:', sessionId);
+            sessions[sessionId].rounds = rounds; // Set total rounds
+            startRound(sessionId); // Start the first round
         } else {
             console.error(`Cannot start game: not enough players or session not found. Session:`, sessions[sessionId]);
             socket.emit('error', 'Cannot start game: not enough players or session not found');
@@ -101,8 +79,13 @@ io.on('connection', (socket) => {
             io.to(sessionId).emit('updatePoints', { points: { [guesser.name]: guesser.points } });
         }
 
-        // Start next round or end game
-        // This is where you'd implement the logic to reshuffle roles and start a new round
+        // Check if all rounds are completed
+        if (session.currentRound >= session.rounds) {
+            io.to(sessionId).emit('endGame'); // Signal end of game
+        } else {
+            // Start next round
+            startRound(sessionId);
+        }
     });
 
     socket.on('disconnect', () => {
@@ -110,6 +93,37 @@ io.on('connection', (socket) => {
         // Handle player disconnection here
     });
 });
+
+function startRound(sessionId) {
+    const session = sessions[sessionId];
+    session.currentRound++;
+
+    // Assign roles for this round
+    const roles = ['Guesser', 'Speaker 1', 'Speaker 2', 'Speaker 3'];
+    const shuffledRoles = roles.sort(() => Math.random() - 0.5);
+    
+    session.roles = {};
+    session.players.forEach((player, index) => {
+        session.roles[player.socketId] = shuffledRoles[index];
+    });
+
+    // Choose a random script
+    const randomScriptIndex = Math.floor(Math.random() * scripts.length);
+    session.currentScript = scripts[randomScriptIndex];
+    session.currentLineIndex = 0;
+
+    console.log(`Starting Round ${session.currentRound} for session ${sessionId}`);
+    console.log('Roles assigned:', session.roles);
+    console.log('Selected script:', session.currentScript);
+
+    io.to(sessionId).emit('gameStarted', { 
+        rounds: session.rounds, 
+        roles: session.roles
+    });
+
+    // Start the first line for this round
+    nextLine(sessionId);
+}
 
 function nextLine(sessionId) {
     const session = sessions[sessionId];

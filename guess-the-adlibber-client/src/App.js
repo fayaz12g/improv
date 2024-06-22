@@ -4,7 +4,6 @@ import './App.css';
 import './title.png';
 import titleImage from './title.png';
 
-
 function App() {
     const [ipAddress, setIpAddress] = useState('');
     const [role, setRole] = useState(null);
@@ -22,11 +21,13 @@ function App() {
     const [joinedSession, setJoinedSession] = useState(false);
     const [isEndScene, setIsEndScene] = useState(false);
     const [isSpeaker, setIsSpeaker] = useState(false);
+    const [connectionError, setConnectionError] = useState(false); // State for connection error
 
     useEffect(() => {
         if (socket) {
             socket.on('connect', () => {
                 console.log('Successfully connected to the server');
+                setConnectionError(false); // Reset connection error state on successful connection
             });
             socket.on('sessionCreated', ({ sessionId }) => {
                 const shortSessionId = sessionId.substr(0, 4).toUpperCase();
@@ -78,6 +79,13 @@ function App() {
         const newSocket = io(url, {
             transports: ['websocket'],
         });
+
+        // Handle connection error
+        newSocket.on('connect_error', (error) => {
+            console.error('Connection error:', error);
+            setConnectionError(true);
+        });
+
         setSocket(newSocket);
     };
 
@@ -232,11 +240,12 @@ function App() {
             {!socket ? (
                 <div>
                     <div className="centered-image-container">
-                    <img src="%PUBLIC_URL%/title.png" alt="Title" className="centered-image" />
+                        <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
                     </div>
                     <h2>Connect to a server:</h2>
                     <input type="text" value={ipAddress} onChange={(e) => setIpAddress(e.target.value)} />
                     <button onClick={connectToServer}>Connect</button>
+                    {connectionError && <p style={{ color: 'red' }}>Connection failed. Please check the IP address and try again.</p>}
                 </div>
             ) : !role ? (
                 <div>
