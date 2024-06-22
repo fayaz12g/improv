@@ -20,6 +20,7 @@ function App() {
     const [sessionCreated, setSessionCreated] = useState(false);
     const [joinedSession, setJoinedSession] = useState(false);
     const [isEndScene, setIsEndScene] = useState(false);
+    const [isEndGame, setIsEndGame] = useState(false);
     const [isSpeaker, setIsSpeaker] = useState(false);
     const [connectionError, setConnectionError] = useState(false); // State for connection error
 
@@ -69,6 +70,9 @@ function App() {
             socket.on('endScene', () => {
                 setIsEndScene(true);
                 setIsSpeaker(false);
+            });
+            socket.on('endGame', () => {
+                setIsEndGame(true);
             });
         }
     }, [socket, players, role]);
