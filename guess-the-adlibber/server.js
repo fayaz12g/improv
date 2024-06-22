@@ -85,6 +85,7 @@ io.on('connection', (socket) => {
         } else {
             // Increment current round
             session.currentRound++;
+            console.log('Begining Round', session.currentRound, '/', session.rounds);
     
             // Start next round
             startRound(sessionId);
@@ -194,9 +195,6 @@ function nextLine(sessionId) {
         // Check if all rounds are completed
         if (session.currentRound >= session.rounds) {
             io.to(sessionId).emit('endGame'); // Signal end of game
-        } else {
-            // Start next round
-            startRound(sessionId);
         }
     }
 }
