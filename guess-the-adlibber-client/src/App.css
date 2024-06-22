@@ -29,6 +29,10 @@ body {
   padding: 40px;
 }
 
+.App div {
+  color: white; /* Set default color for all div elements */
+}
+
 /* Headers */
 h2, h3, h4 {
   margin: 20px 0;
@@ -73,12 +77,17 @@ button:hover {
 ul {
   list-style: none;
   padding: 0;
+  color: white;
 }
 
 li {
   margin: 10px 0;
+  color: white;
 }
 
+p {
+  color: white;
+}
 
 .App-logo {
   height: 40vmin;

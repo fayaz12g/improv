@@ -163,9 +163,9 @@ function App() {
 
     const renderPlayerScreen = () => (
         <div>
-            <h2>Player Screen</h2>
             {!joinedSession ? (
                 <>
+                <h2>Join a Game</h2>
                 <div>
                   <input
                     type="text"
@@ -188,6 +188,7 @@ function App() {
               </>              
             ) : !gameStarted ? (
                 <div>
+                    <h2>Welcome, {playerName}</h2>
                     <h3>Joined Session: {sessionId}</h3>
                     <h4>Players:</h4>
                     <ul>
