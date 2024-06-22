@@ -189,8 +189,8 @@ function App() {
                                 <div>END SCENE</div>
                             ) : (
                                 <>
-                                    <div>Dialogue: {currentLine?.text}</div>
-                                    {currentLine?.isAdlib && <div>(This is an ADLIB line)</div>}
+                                    <div>Dialogue: <br />{currentLine?.text}</div>
+                                    {currentLine?.isAdlib && <div>(Good luck!)</div>}
                                     {isSpeaker && <button onClick={nextLine}>Next</button>}
                                 </>
                             )}

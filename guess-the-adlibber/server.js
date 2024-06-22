@@ -19,6 +19,7 @@ let sessions = {};
 
 // Load scripts from JSON file
 const scripts = JSON.parse(fs.readFileSync('./scripts.json', 'utf8'));
+console.log('Loaded scripts:', scripts);
 
 io.on('connection', (socket) => {
     console.log('New client connected:', socket.id);
@@ -51,30 +52,36 @@ io.on('connection', (socket) => {
     });
 
     socket.on('startGame', ({ sessionId, rounds }) => {
+        console.log(`Starting game for session ${sessionId} with ${rounds} rounds`);
         if (sessions[sessionId] && sessions[sessionId].players.length === 4) {
-            const roles = ['Guesser', 'Speaker One', 'Speaker Two', 'Speaker Three'];
+            const roles = ['Guesser', 'Speaker 1', 'Speaker 2', 'Speaker 3'];
             const shuffledRoles = roles.sort(() => Math.random() - 0.5);
             
             sessions[sessionId].roles = {};
             sessions[sessionId].players.forEach((player, index) => {
                 sessions[sessionId].roles[player.socketId] = shuffledRoles[index];
             });
-
+    
+            console.log('Roles assigned:', sessions[sessionId].roles);
+    
             // Choose a random script
             const randomScriptIndex = Math.floor(Math.random() * scripts.length);
             sessions[sessionId].currentScript = scripts[randomScriptIndex];
             sessions[sessionId].currentLineIndex = 0;
-
+    
+            console.log('Selected script:', sessions[sessionId].currentScript);
+    
             io.to(sessionId).emit('gameStarted', { 
                 rounds, 
                 roles: sessions[sessionId].roles
             });
-
+    
             // Start the first line
             nextLine(sessionId);
-
+    
             console.log('Game started for session:', sessionId);
         } else {
+            console.error(`Cannot start game: not enough players or session not found. Session:`, sessions[sessionId]);
             socket.emit('error', 'Cannot start game: not enough players or session not found');
         }
     });
@@ -85,7 +92,7 @@ io.on('connection', (socket) => {
 
     socket.on('guessAdlibber', ({ sessionId, guess }) => {
         const session = sessions[sessionId];
-        const adlibber = session.players.find(player => session.roles[player.socketId] === 'Speaker One');
+        const adlibber = session.players.find(player => session.roles[player.socketId] === 'Speaker 1');
         
         if (adlibber.name === guess) {
             // Correct guess
@@ -106,13 +113,39 @@ io.on('connection', (socket) => {
 
 function nextLine(sessionId) {
     const session = sessions[sessionId];
+    if (!session) {
+        console.error(`Session ${sessionId} not found`);
+        return;
+    }
+
+    console.log(`Current script:`, session.currentScript);
+    console.log(`Current line index:`, session.currentLineIndex);
+
     if (session.currentLineIndex < session.currentScript.dialogue.length) {
         const currentLine = session.currentScript.dialogue[session.currentLineIndex];
+        console.log(`Current line:`, currentLine);
+
         const speakerRole = `Speaker ${currentLine.speaker}`;
+        console.log(`Looking for speaker with role:`, speakerRole);
+
         const speakerSocket = Object.keys(session.roles).find(key => session.roles[key] === speakerRole);
-        const speakerName = session.players.find(player => player.socketId === speakerSocket).name;
-        
+        console.log(`Speaker socket:`, speakerSocket);
+
+        if (!speakerSocket) {
+            console.error(`No player found with role ${speakerRole}`);
+            return;
+        }
+
+        const speaker = session.players.find(player => player.socketId === speakerSocket);
+        if (!speaker) {
+            console.error(`No player found with socket ID ${speakerSocket}`);
+            return;
+        }
+
+        const speakerName = speaker.name;
         session.currentSpeaker = speakerSocket;
+
+        console.log(`Current speaker: ${speakerName}`);
 
         if (currentLine.text === "ADLIB") {
             io.to(speakerSocket).emit('updateLine', { line: "ADLIB", isAdlib: true, isSpeaker: true });
@@ -129,7 +162,11 @@ function nextLine(sessionId) {
 
         // Tell the guesser who is speaking
         const guesserSocket = Object.keys(session.roles).find(key => session.roles[key] === 'Guesser');
-        io.to(guesserSocket).emit('updateLine', { line: `${speakerName} is speaking...`, isAdlib: false, isSpeaker: false });
+        if (guesserSocket) {
+            io.to(guesserSocket).emit('updateLine', { line: `${speakerName} is speaking...`, isAdlib: false, isSpeaker: false });
+        } else {
+            console.error('No guesser found in the session');
+        }
 
         session.currentLineIndex++;
     } else {
