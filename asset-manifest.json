@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/improv/static/css/main.f69df740.css",
-    "main.js": "/improv/static/js/main.9198649e.js",
+    "main.css": "/improv/static/css/main.2800769d.css",
+    "main.js": "/improv/static/js/main.18aad875.js",
     "static/js/453.288ee4bb.chunk.js": "/improv/static/js/453.288ee4bb.chunk.js",
     "static/media/title.png": "/improv/static/media/title.6da96dc949505148cf45.png",
     "index.html": "/improv/index.html",
-    "main.f69df740.css.map": "/improv/static/css/main.f69df740.css.map",
-    "main.9198649e.js.map": "/improv/static/js/main.9198649e.js.map",
+    "main.2800769d.css.map": "/improv/static/css/main.2800769d.css.map",
+    "main.18aad875.js.map": "/improv/static/js/main.18aad875.js.map",
     "453.288ee4bb.chunk.js.map": "/improv/static/js/453.288ee4bb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f69df740.css",
-    "static/js/main.9198649e.js"
+    "static/css/main.2800769d.css",
+    "static/js/main.18aad875.js"
   ]
 }
