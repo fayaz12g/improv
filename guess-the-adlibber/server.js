@@ -84,10 +84,7 @@ io.on('connection', (socket) => {
             console.log('Game has ended');
             io.to(sessionId).emit('endGame'); // Signal end of game
         } else {
-            // Increment current round
-            session.currentRound++;
-            console.log('Begining Round', session.currentRound, '/', session.rounds);
-    
+
             // Start next round
             startRound(sessionId);
         }
@@ -103,6 +100,7 @@ io.on('connection', (socket) => {
 function startRound(sessionId) {
     const session = sessions[sessionId];
     session.currentRound++;
+    console.log('Begining round', session.currentRound, '/', session.rounds);
 
     // Assign roles for this round
     const roles = ['Guesser', 'Speaker 1', 'Speaker 2', 'Speaker 3'];
