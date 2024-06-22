@@ -1,0 +1,34 @@
+[
+    {
+      "script_id": 1,
+      "dialogue": [
+        {"speaker": "2", "text": "Hello, how are you today?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "What are your plans for the weekend?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That sounds fun!"}
+      ]
+    },
+    {
+      "script_id": 2,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "Why would you say that?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's a little racist..."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 3,
+      "dialogue": [
+        {"speaker": "3", "text": "Did you watch the game last night?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I couldn't believe the final score."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I'm still in shock."}
+      ]
+    }
+  ]
+  
