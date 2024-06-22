@@ -78,15 +78,19 @@ io.on('connection', (socket) => {
             guesser.points += 1;
             io.to(sessionId).emit('updatePoints', { points: { [guesser.name]: guesser.points } });
         }
-
+    
         // Check if all rounds are completed
         if (session.currentRound >= session.rounds) {
             io.to(sessionId).emit('endGame'); // Signal end of game
         } else {
+            // Increment current round
+            session.currentRound++;
+    
             // Start next round
             startRound(sessionId);
         }
     });
+    
 
     socket.on('disconnect', () => {
         console.log('Client disconnected:', socket.id);
@@ -186,6 +190,14 @@ function nextLine(sessionId) {
     } else {
         // End of script
         io.to(sessionId).emit('endScene');
+
+        // Check if all rounds are completed
+        if (session.currentRound >= session.rounds) {
+            io.to(sessionId).emit('endGame'); // Signal end of game
+        } else {
+            // Start next round
+            startRound(sessionId);
+        }
     }
 }
 
