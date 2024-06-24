@@ -57,6 +57,14 @@ io.on('connection', (socket) => {
         console.log(`Starting game for session ${sessionId} with ${rounds} rounds`);
         if (sessions[sessionId] && sessions[sessionId].players.length === 4) {
             sessions[sessionId].rounds = rounds; // Set total rounds
+            sessions[sessionId].currentRound = 0; // Initialize current round to 0
+            
+            // Emit gameStarted event once at the beginning of the game
+            io.to(sessionId).emit('gameStarted', { 
+                rounds: sessions[sessionId].rounds,
+                players: sessions[sessionId].players
+            });
+            
             startRound(sessionId); // Start the first round
         } else {
             console.error(`Cannot start game: not enough players or session not found. Session:`, sessions[sessionId]);
@@ -100,7 +108,7 @@ io.on('connection', (socket) => {
 function startRound(sessionId) {
     const session = sessions[sessionId];
     session.currentRound++;
-    console.log('Begining round', session.currentRound, '/', session.rounds);
+    console.log('Beginning round', session.currentRound, '/', session.rounds);
 
     // Assign roles for this round
     const roles = ['Guesser', 'Speaker 1', 'Speaker 2', 'Speaker 3'];
@@ -120,10 +128,10 @@ function startRound(sessionId) {
     console.log('Roles assigned:', session.roles);
     console.log('Selected script:', session.currentScript);
 
-    io.to(sessionId).emit('gameStarted', { 
-        rounds: session.rounds, 
-        roles: session.roles,
-        currentround: session.currentRound
+    // Emit roundStarted event at the beginning of each round
+    io.to(sessionId).emit('roundStarted', { 
+        currentRound: session.currentRound,
+        roles: session.roles
     });
 
     // Start the first line for this round

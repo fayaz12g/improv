@@ -134,3 +134,8 @@ p {
   max-width: 20vw; /* Set maximum width relative to viewport width */
   height: auto; /* Maintain aspect ratio */
 }
+
+.smalltext {
+  font-size: small;
+  color: #ffffff;
+}
