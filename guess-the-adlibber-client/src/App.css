@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-@import './Ink.ttf';
+/* @import './Ink.ttf'; */
+@import './AlloyInk-nRLyO.ttf';
 
 body {
-  font-family: 'zai Quill Ink Handy', 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #F08080; /* Light coral color */
@@ -36,6 +37,7 @@ body {
 
 /* Headers */
 h2, h3, h4 {
+  font-family: 'a Alloy Ink';
   margin: 20px 0;
   color: #ffffff; /* White color for better visibility on coral background */
 }
