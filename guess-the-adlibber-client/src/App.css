@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 /* @import './Ink.ttf'; */
-@import './AlloyInk-nRLyO.ttf';
+/* @import './AlloyInk-nRLyO.ttf'; */
 
 body {
   font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
@@ -37,7 +37,6 @@ body {
 
 /* Headers */
 h2, h3, h4 {
-  font-family: 'a Alloy Ink';
   margin: 20px 0;
   color: #ffffff; /* White color for better visibility on coral background */
 }
