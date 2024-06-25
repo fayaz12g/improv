@@ -1,34 +1,88 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-/* @import './Ink.ttf'; */
-/* @import './AlloyInk-nRLyO.ttf'; */
+
+@font-face {
+  font-family: 'Alloy Ink';
+  src: url('./AlloyInk-nRLyO.ttf') format('truetype'),
+       url('./AlloyInk-lgdWw.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quill Ink';
+  src: url('./Ink.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes backgroundShift {
+  0% { background-color: #F08080; }  /* Coral */
+  33% { background-color: #FFA500; } /* Orange */
+  66% { background-color: #FFC0CB; } /* Pink */
+  100% { background-color: #F08080; } /* Back to Coral */
+}
+
+@keyframes dotMoveLeft {
+  from { background-position: 0 0; }
+  to { background-position: 30px 0; }
+}
+
+@keyframes dotMoveRight {
+  from { background-position: 0 0; }
+  to { background-position: -30px 0; }
+}
 
 body {
-  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Quill Ink', 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #F08080; /* Light coral color */
-  background-image: radial-gradient(circle, #ffffff 20%, transparent 0); /* Adjust the percentage for dot size */
-  background-size: 30px 30px; /* Adjusted background size */
+  animation: backgroundShift 120s infinite; /* Changed from 15s to 120s */
+  background-image: 
+    radial-gradient(circle, #ffffff 10%, transparent 10%),
+    radial-gradient(circle, #ffffff 10%, transparent 10%);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  position: relative;
+  overflow: hidden;
 }
 
+body::before,
+body::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit;
+  background-size: inherit;
+  animation: dotMoveLeft 10s linear infinite;
+}
+
+body::after {
+  top: 15px;
+  animation-name: dotMoveRight;
+}
 
 /* App Container */
 .App {
   text-align: center;
   padding: 20px;
-  color: #333; /* Darker text color for contrast */
+  color: #333;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(63, 14, 14, 0.74); /* Slightly transparent background */
+  background: rgba(63, 14, 14, 0.74);
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for a 3D effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .App div {
@@ -37,6 +91,7 @@ body {
 
 /* Headers */
 h2, h3, h4 {
+  font-family: 'Alloy Ink';
   margin: 20px 0;
   color: #ffffff; /* White color for better visibility on coral background */
 }
