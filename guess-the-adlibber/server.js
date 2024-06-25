@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const express = require('express');
 const socketIO = require('socket.io');
+const serverVersion = '0.0.3 Slide';
 
 const app = express();
 
@@ -25,7 +26,7 @@ io.on('connection', (socket) => {
     console.log('New client connected:', socket.id);
 
     // Emit the server version to the client upon connection
-    socket.emit('serverVersion', '0.0.3 Slide'); 
+    socket.emit('serverVersion', serverVersion); 
 
     socket.on('createSession', () => {
         const sessionId = Math.random().toString(36).substring(2, 15);
@@ -108,25 +109,61 @@ io.on('connection', (socket) => {
     });
 });
 
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
 function startRound(sessionId) {
     const session = sessions[sessionId];
     session.currentRound++;
     console.log('Beginning round', session.currentRound, '/', session.rounds);
 
+    // Check for the previous round's Speaker 1
+    let previousSpeaker1 = null;
+    if (session.roles) {
+        for (const [socketId, role] of Object.entries(session.roles)) {
+            if (role === 'Speaker 1') {
+                previousSpeaker1 = socketId;
+                break;
+            }
+        }
+    }
+
     // Assign roles for this round
-    const roles = ['Guesser', 'Speaker 1', 'Speaker 2', 'Speaker 3'];
-    const shuffledRoles = roles.sort(() => Math.random() - 0.5);
+    const roles = ['Speaker 1', 'Speaker 2', 'Speaker 3'];
+    const shuffledRoles = shuffle(roles);
     
     session.roles = {};
-    session.players.forEach((player, index) => {
-        session.roles[player.socketId] = shuffledRoles[index];
-    });
+    
+    if (previousSpeaker1) {
+        session.roles[previousSpeaker1] = 'Guesser';
+        const remainingPlayers = session.players.filter(player => player.socketId !== previousSpeaker1);
+
+        remainingPlayers.forEach((player, index) => {
+            session.roles[player.socketId] = shuffledRoles[index];
+        });
+    } else {
+        // If no previous Speaker 1, shuffle all roles
+        const allRoles = ['Guesser', ...roles];
+        const shuffledAllRoles = shuffle(allRoles);
+
+        session.players.forEach((player, index) => {
+            session.roles[player.socketId] = shuffledAllRoles[index];
+        });
+    }
 
     // Choose a random script
     const randomScriptIndex = Math.floor(Math.random() * scripts.length);
     session.currentScript = scripts[randomScriptIndex];
     session.currentLineIndex = 0;
 
+    // Remove the selected script from the pool of possible scripts
+    scripts.splice(randomScriptIndex, 1);
+    
     console.log(`Starting Round ${session.currentRound} for session ${sessionId}`);
     console.log('Roles assigned:', session.roles);
     console.log('Selected script:', session.currentScript);
