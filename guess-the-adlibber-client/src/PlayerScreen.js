@@ -105,16 +105,18 @@ const PlayerScreen = ({
             {playerRole === 'Guesser' &&
               (isEndScene ? (
                 <div>
-                  <h3>Your Role: Guesser</h3>
-                  <p>Guess who the Adlibber was:</p>
-                  {players.map((player, index) => (
-                    <button
-                      key={index}
-                      onClick={() => guessAdlibber(player.name)}
-                    >
-                      {player.name}
-                    </button>
-                  ))}
+                    <h3>Your Role: Guesser</h3>
+                    <p>Guess who the Adlibber was:</p>
+                    {players.map((player, index) => (
+                        player.role !== 'Guesser' && (
+                            <button
+                                key={index}
+                                onClick={() => guessAdlibber(player.name)}
+                            >
+                                {player.name}
+                            </button>
+                        )
+                    ))}
                 </div>
               ) : (
                 <div>
