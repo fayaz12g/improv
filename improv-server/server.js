@@ -3,6 +3,7 @@ const fs = require('fs');
 const express = require('express');
 const socketIO = require('socket.io');
 const serverVersion = '0.0.3 Slide';
+const os = require('os');
 
 const app = express();
 
@@ -27,6 +28,31 @@ io.on('connection', (socket) => {
 
     // Emit the server version to the client upon connection
     socket.emit('serverVersion', serverVersion); 
+
+    // Get the server's IP address
+    const networkInterfaces = os.networkInterfaces();
+    let serverIpAddress = null;
+
+    // Find the first non-internal IPv4 address
+    for (const [interfaceName, interfaceInfo] of Object.entries(networkInterfaces)) {
+        for (const iface of interfaceInfo) {
+            // Skip over internal (non-IPv4) and loopback addresses
+            if (iface.family === 'IPv4' && !iface.internal && iface.address !== '127.0.0.1') {
+                serverIpAddress = iface.address;
+                break;
+            }
+        }
+        if (serverIpAddress) {
+            break;
+        }
+    }
+
+    // Emit the server IP address to the client
+    if (serverIpAddress) {
+        socket.emit('serverIpAddress', serverIpAddress);
+    } else {
+        console.warn('Server IP address not found.');
+    }
 
     socket.on('createSession', () => {
         const sessionId = Math.random().toString(36).substring(2, 15);
@@ -245,4 +271,28 @@ function nextLine(sessionId) {
 const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
+
+    // Log server IP address on startup
+    const networkInterfaces = os.networkInterfaces();
+    let serverIpAddress = null;
+
+    // Find the first non-internal IPv4 address
+    for (const [interfaceName, interfaceInfo] of Object.entries(networkInterfaces)) {
+        for (const iface of interfaceInfo) {
+            // Skip over internal (non-IPv4) and loopback addresses
+            if (iface.family === 'IPv4' && !iface.internal && iface.address !== '127.0.0.1') {
+                serverIpAddress = iface.address;
+                break;
+            }
+        }
+        if (serverIpAddress) {
+            break;
+        }
+    }
+
+    if (serverIpAddress) {
+        console.log(`Server is hosted at: http://${serverIpAddress}:${PORT}`);
+    } else {
+        console.warn('Server IP address not found.');
+    }
 });

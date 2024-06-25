@@ -8,6 +8,7 @@ import HostScreen from './HostScreen';
 
 function App() {
     const [ipAddress, setIpAddress] = useState('');
+    const [serverIP, setServerIP] = useState('');
     const [role, setRole] = useState(null);
     const [socket, setSocket] = useState(null);
     const [sessionId, setSessionId] = useState('');
@@ -131,6 +132,9 @@ function App() {
         newSocket.on('serverVersion', (version) => {
           setServerV(version);
       });
+      newSocket.on('serverIpAddress', (serverIpAddress) => {
+        setServerIP(serverIpAddress);
+    });
     };
 
     const createSession = () => {
@@ -166,7 +170,7 @@ function App() {
 
     const renderHostScreen = () => (
       <HostScreen
-        ipAddress={ipAddress}
+        ipAddress={serverIP}
         sessionCreated={sessionCreated}
         createSession={createSession}
         gameStarted={gameStarted}
