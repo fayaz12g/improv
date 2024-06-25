@@ -42,13 +42,15 @@ const HostScreen = ({
       </div>
     ) : (
       <div>
-        <h3>Round: {currentRound}/{rounds}</h3>
-        <h4>Leaderboard:</h4>
-        <ul>
-          {Object.entries(leaderboard).map(([name, score]) => (
-            <li key={name}>{name}: {score}</li>
-          ))}
-        </ul>
+          <h3>Round: {currentRound}/{rounds}</h3>
+          <h4>Leaderboard:</h4>
+          <ul>
+              {Object.entries(leaderboard)
+                  .sort(([, scoreA], [, scoreB]) => scoreB - scoreA) // Sort by score in descending order
+                  .map(([name, score]) => (
+                      <li key={name}>{name}: {score}</li>
+                  ))}
+          </ul>
       </div>
     )}
   </div>
