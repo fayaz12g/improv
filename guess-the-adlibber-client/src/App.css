@@ -139,12 +139,12 @@ body.dark::after {
 }
 
 body.light .App {
-  background: linear-gradient(to top left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
   color: #000000;
 }
 
 body.dark .App {
-  background: linear-gradient(to top left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
   color: #ffffff;
 }
 
