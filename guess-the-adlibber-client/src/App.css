@@ -139,14 +139,15 @@ body.dark::after {
 }
 
 body.light .App {
-  background: rgba(255, 255, 255, 0.7);
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
   color: #000000;
 }
 
 body.dark .App {
-  background: rgba(0, 0, 0, 0.7);
+  background: linear-gradient(to top left, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6));
   color: #ffffff;
 }
+
 
 .App div {
   color: inherit;
@@ -344,4 +345,9 @@ body.dark {
   bottom: 20px;
   left: 20px;
   color: var(--toggle-color); /* Adjust color to match your theme */
+}
+
+.scale-200 {
+  transform: scale(2); /* Scale to 200% */
+  transform-origin: 0 0; /* Ensures the scaling starts from the top-left corner */
 }

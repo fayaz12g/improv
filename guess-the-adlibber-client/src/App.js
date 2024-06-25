@@ -3,6 +3,8 @@ import io from 'socket.io-client';
 import './App.css';
 import './title.png';
 import titleImage from './title.png';
+import PlayerScreen from './PlayerScreen';
+import HostScreen from './HostScreen';
 
 function App() {
     const [ipAddress, setIpAddress] = useState('');
@@ -163,154 +165,44 @@ function App() {
     };
 
     const renderHostScreen = () => (
-        <div>
-            <h2>Server IP: {ipAddress}</h2>
-            {!sessionCreated ? (
-                <button onClick={createSession}>Create Session</button>
-            ) : !gameStarted ? (
-                <div>
-                    <h3>Session ID: {sessionId}</h3>
-                    <h4>Players:</h4>
-                    <ul>
-                        {players.map((player, index) => (
-                            <li key={index}>{player.name}</li>
-                        ))}
-                    </ul>
-                    {players.length === 4 && (
-                        <div>
-                            <h3>How many rounds would you like to play?</h3>
-                            <input
-                                type="number"
-                                min="1"
-                                max="12"
-                                value={rounds}
-                                onChange={(e) => setRounds(parseInt(e.target.value))}
-                            />
-                            <button onClick={startGame}>Start Game</button>
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <div>
-                    <h3>Round: {currentRound}/{rounds}</h3>
-                    <h4>Leaderboard:</h4>
-                    <ul>
-                        {Object.entries(leaderboard).map(([name, score]) => (
-                            <li key={name}>{name}: {score}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-        </div>
+      <HostScreen
+        ipAddress={ipAddress}
+        sessionCreated={sessionCreated}
+        createSession={createSession}
+        gameStarted={gameStarted}
+        sessionId={sessionId}
+        players={players}
+        rounds={rounds}
+        setRounds={setRounds}
+        startGame={startGame}
+        currentRound={currentRound}
+        leaderboard={leaderboard}
+      />
     );
 
     const renderPlayerScreen = () => (
-      <div>
-        {!isEndGame ?  (
-          <div>
-              {!joinedSession ? (
-                  <>
-                  <h2>Join a Game</h2>
-                  <div>
-                    <input
-                      type="text"
-                      value={sessionId}
-                      onChange={(e) => setSessionId(e.target.value)}
-                      placeholder="Enter Session ID"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="text"
-                      value={playerName}
-                      onChange={(e) => setPlayerName(e.target.value)}
-                      placeholder="Enter Your Name"
-                    />
-                  </div>
-                  <div>
-                    <button onClick={joinSession}>Join Session</button>
-                  </div>
-                </>              
-              ) : !gameStarted ? (
-                  <div>
-                      <h2>Welcome, {playerName}</h2>
-                      <h3>Joined Session: {sessionId}</h3>
-                      <h4>Players:</h4>
-                      <ul>
-                          {players.map((player, index) => (
-                              <li key={index}>{player.name}</li>
-                          ))}
-                      </ul>
-                      <p>{players.length === 4 ? "Waiting for host to start the game..." : "Waiting for 4 players..."}</p>
-                  </div>
-              ) : (
-                  <div>
-                        {playerRole && playerRole.startsWith('Speaker 1') && (
-                          <>
-                              <h3>Your Role: Adlibber</h3>
-                              {isEndScene ? (
-                                  <div>END SCENE</div>
-                              ) : (
-                                  <>
-                                      <div>Dialogue: <br />{currentLine?.text}</div>
-                                      {currentLine?.isAdlib && <p className='smalltext'>(It's your line!)</p>}
-                                      {isSpeaker && <button onClick={nextLine}>Next</button>}
-                                  </>
-                              )}
-                          </>
-                      )}
-                      {playerRole && (playerRole.startsWith('Speaker 2') || playerRole.startsWith('Speaker 3')) && (
-                          <>
-                              <h3>Your Role: Speaker</h3>
-                              {isEndScene ? (
-                                  <div>END SCENE</div>
-                              ) : (
-                                  <>
-                                      <div>Dialogue: <br />{currentLine?.text}</div>
-                                      {isSpeaker && <p className='smalltext'>(Read your line!)</p>}
-                                      {isSpeaker && <button onClick={nextLine}>Next</button>}
-                                  </>
-                              )}
-                          </>
-                      )}
-                      {playerRole === 'Guesser' && (
-                          isEndScene ? (
-                              <div>
-                                  <h3>Your Role: Guesser</h3>
-                                  <p>Guess who the Adlibber was:</p>
-                                  {players.map((player, index) => (
-                                      <button key={index} onClick={() => guessAdlibber(player.name)}>
-                                          {player.name}
-                                      </button>
-                                  ))}
-                              </div>
-                          ) : (
-                              <div>
-                                  <h3>Your Role: Guesser</h3>
-                                  <p>Listen carefully and try to guess the adlibber!</p>
-                                  <p>{currentLine?.text}</p>
-                              </div>
-                          )
-                      )}
-                  </div>
-              )}
-          </div>
-        ) : (
-          <div>
-              <h3>Game Results</h3>
-              {/* <h4>You are in 1st place</h4> */}
-              <ul>
-                  {Object.entries(leaderboard).map(([name, score]) => (
-                      <li key={name}>{name}: {score}</li>
-                  ))}
-              </ul>
-          </div>
-      )}
-  </div>
-);
+      <PlayerScreen
+        isEndGame={isEndGame}
+        joinedSession={joinedSession}
+        sessionId={sessionId}
+        setSessionId={setSessionId}
+        playerName={playerName}
+        setPlayerName={setPlayerName}
+        joinSession={joinSession}
+        gameStarted={gameStarted}
+        players={players}
+        playerRole={playerRole}
+        isEndScene={isEndScene}
+        currentLine={currentLine}
+        isSpeaker={isSpeaker}
+        nextLine={nextLine}
+        guessAdlibber={guessAdlibber}
+        leaderboard={leaderboard}
+      />
+    );
 
   return (
-    <div className="App">
+  <div className="App">
         {!socket ? (
             <div>
                 <div className="centered-image-container">

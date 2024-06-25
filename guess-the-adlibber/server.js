@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
 
     // Emit the server version to the client upon connection
     socket.emit('serverVersion', '0.0.3 Slide'); 
-    
+
     socket.on('createSession', () => {
         const sessionId = Math.random().toString(36).substring(2, 15);
         const shortSessionId = sessionId.substr(0, 4).toUpperCase();
