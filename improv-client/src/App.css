@@ -168,10 +168,10 @@ body.dark h4 {
   outline-width: 3px;
   outline-color: #000000;
   text-shadow: 
-    -1px -1px 0 #fff,  
-     1px -1px 0 #fff,
-    -1px  1px 0 #fff,
-     1px  1px 0 #fff;
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
 }
 
 body.light h1, body.light h2, body.light h3 {
