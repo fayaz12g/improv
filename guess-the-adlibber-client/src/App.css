@@ -15,11 +15,14 @@
   font-style: normal;
 }
 
-@keyframes backgroundShift {
-  0% { background-color: #F08080; }  /* Coral */
-  33% { background-color: #FFA500; } /* Orange */
-  66% { background-color: #FFC0CB; } /* Pink */
-  100% { background-color: #F08080; } /* Back to Coral */
+@keyframes backgroundShiftLight {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes backgroundShiftDark {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes dotMoveLeft {
@@ -36,18 +39,24 @@ body {
   font-family: 'Quill Ink', 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
   margin: 0;
   padding: 0;
-  animation: backgroundShift 120s infinite; /* Changed from 15s to 120s */
-  background-image: 
-    radial-gradient(circle, #ffffff 10%, transparent 10%),
-    radial-gradient(circle, #ffffff 10%, transparent 10%);
-  background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   position: relative;
   overflow: hidden;
+}
+
+body.light {
+  background: linear-gradient(90deg, #FFA500, #FFC0CB, #F08080);
+  background-size: 400% 400%;
+  animation: backgroundShiftLight 120s ease infinite;
+}
+
+body.dark {
+  background: linear-gradient(270deg, #8B4500, #8B3A62, #8B0000);
+  background-size: 400% 400%;
+  animation: backgroundShiftDark 120s ease infinite;
 }
 
 body::before,
@@ -58,42 +67,139 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: inherit;
-  background-size: inherit;
-  animation: dotMoveLeft 10s linear infinite;
+  background-size: 30px 30px;
+  animation-duration: 10s, 150s;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: infinite, infinite;
 }
 
-body::after {
+body.light::before,
+body.dark::before {
+  animation-name: dotMoveLeft, radialPulse;
+}
+
+body.light::after,
+body.dark::after {
   top: 15px;
-  animation-name: dotMoveRight;
+  animation-name: dotMoveRight, radialPulse;
+}
+
+body.light::before,
+body.light::after {
+  animation-name: dotMoveLeft, radialPulse;
+}
+
+body.dark::before,
+body.dark::after {
+  animation-name: dotMoveLeft, radialPulseDark;
+}
+
+body.light::after,
+body.dark::after {
+  top: 15px;
+  animation-name: dotMoveRight, radialPulse;
+}
+
+body.dark::after {
+  animation-name: dotMoveRight, radialPulseDark;
+}
+
+@keyframes dotMoveLeft {
+  from { background-position: 0 0; }
+  to { background-position: 30px 0; }
+}
+
+@keyframes dotMoveRight {
+  from { background-position: 0 0; }
+  to { background-position: -30px 0; }
+}
+
+@keyframes radialPulse {
+  0%, 100% { background-image: radial-gradient(circle, rgba(255,255,255,0.8) 10%, rgba(255,255,255,0) 1%); }
+  50% { background-image: radial-gradient(circle, rgba(255,255,255,0.8) 10%, rgba(255,255,255,0) 20%); }
+}
+
+@keyframes radialPulseDark {
+  0%, 100% { background-image: radial-gradient(circle, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 1%); }
+  50% { background-image: radial-gradient(circle, rgba(0,0,0,0.8) 10%, rgba(0,0,0,0) 20%); }
 }
 
 /* App Container */
 .App {
   text-align: center;
-  padding: 20px;
-  color: #333;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgba(63, 14, 14, 0.74);
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 40px;
   position: relative;
   z-index: 1;
 }
 
+body.light .App {
+  background: rgba(255, 255, 255, 0.7);
+  color: #000000;
+}
+
+body.dark .App {
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+}
+
 .App div {
-  color: white; /* Set default color for all div elements */
+  color: inherit;
 }
 
 /* Headers */
-h2, h3, h4 {
+h1, h2, h3, h4 {
   font-family: 'Alloy Ink';
   margin: 20px 0;
-  color: #ffffff; /* White color for better visibility on coral background */
+}
+
+body.light h4 {
+  color: gold;
+  outline-width: 3px;
+  outline-color: #000000;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+body.dark h4 {
+  color: gold;
+  outline-width: 3px;
+  outline-color: #ffffff;
+  text-shadow: 
+    -1px -1px 0 #fff,  
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
+}
+
+body.light h1, body.light h2, body.light h3 {
+  color: #ffffff;
+  outline-width: 3px;
+  outline-color: #000000;
+  text-shadow: 
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+body.dark h1, body.dark h2, body.dark h3 {
+  color: #000000;
+  outline-width: 3px;
+  outline-color: #ffffff;
+  text-shadow: 
+    -1px -1px 0 #fff,  
+     1px -1px 0 #fff,
+    -1px  1px 0 #fff,
+     1px  1px 0 #fff;
 }
 
 /* Inputs */
@@ -113,39 +219,41 @@ button {
   margin: 10px;
   border: none;
   border-radius: 10px;
-  background-color: #e58a00;
-  color: white;
   font-size: 16px;
   font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-shadow: 
-    -1px -1px 0 #000,  
-     1px -1px 0 #000,
-    -1px  1px 0 #000,
-     1px  1px 0 #000; /* Outline effect */
+  transition: background-color 0.9s ease;
 }
 
-button:hover {
-  background-color: #8e5808;
+body.light button {
+  background-color: #FFB347; /* Light orange */
+  color: #000000;
+}
+
+body.light button:hover {
+  background-color: #FFA500; /* Darker orange */
+}
+
+body.dark button {
+  background-color: #8B4500; /* Dark orange */
+  color: #FFFFFF;
+}
+
+body.dark button:hover {
+  background-color: #CD853F; /* Lighter brown */
 }
 
 /* Lists */
 ul {
   list-style: none;
   padding: 0;
-  color: white;
 }
 
 li {
   margin: 10px 0;
-  color: white;
 }
 
-p {
-  color: white;
-}
-
+/* Other elements */
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -181,18 +289,59 @@ p {
   }
 }
 
-
 .centered-image-container {
   display: flex;
   justify-content: center;
 }
 
 .centered-image {
-  max-width: 20vw; /* Set maximum width relative to viewport width */
-  height: auto; /* Maintain aspect ratio */
+  max-width: 20vw;
+  height: auto;
 }
 
 .smalltext {
   font-size: small;
+}
+
+body.light .smalltext {
+  color: #000000;
+}
+
+body.dark .smalltext {
   color: #ffffff;
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: var(--toggle-bg-color);
+  color: var(--toggle-color);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+body.light {
+  --toggle-bg-color: white;
+  --toggle-color: black;
+}
+
+body.dark {
+  --toggle-bg-color: black;
+  --toggle-color: white;
+}
+
+.version-text {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  color: var(--toggle-color); /* Adjust color to match your theme */
 }

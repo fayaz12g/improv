@@ -24,6 +24,9 @@ function App() {
     const [isSpeaker, setIsSpeaker] = useState(false);
     const [connectionError, setConnectionError] = useState(false); 
     const [connectionWaiting, setConnectionWaiting] = useState(false);
+    const [theme, setTheme] = useState('light');
+    const [clientVersion, setClientV] = useState('0.0.3 Slide');
+    const [serverVersion, setServerV] = useState('Disconnected');
 
     useEffect(() => {
         if (socket) {
@@ -96,7 +99,12 @@ function App() {
                 setIsEndGame(true);
             });
         }
-    }, [socket, players, role, leaderboard]);
+        document.body.className = theme;
+    }, [socket, players, role, leaderboard, theme]);
+
+    const toggleTheme = () => {
+      setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
 
     const connectToServer = () => {
         const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
@@ -118,6 +126,9 @@ function App() {
           setSocket(newSocket);
           setConnectionWaiting(false);
         });
+        newSocket.on('serverVersion', (version) => {
+          setServerV(version);
+      });
     };
 
     const createSession = () => {
@@ -153,7 +164,7 @@ function App() {
 
     const renderHostScreen = () => (
         <div>
-            <h2>Host Screen</h2>
+            <h2>Server IP: {ipAddress}</h2>
             {!sessionCreated ? (
                 <button onClick={createSession}>Create Session</button>
             ) : !gameStarted ? (
@@ -298,29 +309,40 @@ function App() {
   </div>
 );
 
-    return (
-        <div className="App">
-            {!socket ? (
-                <div>
-                    <div className="centered-image-container">
-                        <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
-                    </div>
-                    {!connectionWaiting && <h2>Connect to a server:</h2>}
-                    {!connectionWaiting && <input type="text" value={ipAddress} onChange={(e) => setIpAddress(e.target.value)} />}
-                    {!connectionWaiting && <button onClick={connectToServer}>Connect</button>}
-                    {connectionWaiting && <h2>Attempting connection, please wait.</h2>}
-                    {connectionError && <p style={{ color: 'red' }}>Connection failed. Please check the IP address and try again.</p>}
+  return (
+    <div className="App">
+        {!socket ? (
+            <div>
+                <div className="centered-image-container">
+                    <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
                 </div>
-            ) : !role ? (
-                <div>
-                    <button onClick={() => setRole('host')}>Host</button>
-                    <button onClick={() => setRole('player')}>Player</button>
-                </div>
-            ) : role === 'host' ? (
-                renderHostScreen()
-            ) : (
-                renderPlayerScreen()
-            )}
+                {!connectionWaiting && <h2>Connect to a server:</h2>}
+                {!connectionWaiting && <input type="text" value={ipAddress} onChange={(e) => setIpAddress(e.target.value)} />}
+                {!connectionWaiting && <button onClick={connectToServer}>Connect</button>}
+                {connectionWaiting && <h2>Attempting connection, please wait.</h2>}
+                {connectionError && <p style={{ color: 'red' }}>Connection failed. Please check the IP address and try again.</p>}
+            </div>
+        ) : !role ? (
+            <div>
+                <button onClick={() => setRole('host')}>Host</button>
+                <button onClick={() => setRole('player')}>Player</button>
+            </div>
+        ) : role === 'host' ? (
+            renderHostScreen()
+        ) : (
+            renderPlayerScreen()
+        )}
+            <button 
+                className="theme-toggle" 
+                onClick={toggleTheme}
+            >
+                {theme === 'light' ? '☀️' : '🌙'}
+            </button>
+          <div className="version-text smalltext">
+            Client Version: {clientVersion}
+            <br />
+            Server Version: {serverVersion}
+        </div>
         </div>
     );
 }
