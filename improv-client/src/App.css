@@ -166,7 +166,7 @@ body.light h4 {
 body.dark h4 {
   color: gold;
   outline-width: 3px;
-  outline-color: #ffffff;
+  outline-color: #000000;
   text-shadow: 
     -1px -1px 0 #fff,  
      1px -1px 0 #fff,
