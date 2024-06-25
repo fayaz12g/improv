@@ -70,7 +70,6 @@ const PlayerScreen = ({
                 ) : (
                   <>
                     <div>
-                      Dialogue: <br />
                       {currentLine?.text}
                     </div>
                     {currentLine?.isAdlib && (
@@ -90,13 +89,17 @@ const PlayerScreen = ({
                     <div>END SCENE</div>
                   ) : (
                     <>
+                    {isSpeaker && (
                       <div>
-                        Dialogue: <br />
+                        Read your line: 
+                      </div>
+                      )}
+                      <div>
                         {currentLine?.text}
                       </div>
-                      {isSpeaker && (
+                      {/* {isSpeaker && (
                         <p className="smalltext">(Read your line!)</p>
-                      )}
+                      )} */}
                       {isSpeaker && <button onClick={nextLine}>Next</button>}
                     </>
                   )}
@@ -108,7 +111,7 @@ const PlayerScreen = ({
                     <h3>Your Role: Guesser</h3>
                     <p>Guess who the Adlibber was:</p>
                     {players.map((player, index) => (
-                        player.role !== 'Guesser' && (
+                        player.name !== playerName && (
                             <button
                                 key={index}
                                 onClick={() => guessAdlibber(player.name)}
