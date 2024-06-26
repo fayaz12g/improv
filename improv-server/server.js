@@ -116,6 +116,11 @@ io.on('connection', (socket) => {
             guesser.points += 1;
             io.to(sessionId).emit('updatePoints', { points: { [guesser.name]: guesser.points } });
         }
+        else {
+            // Adlibber wins
+            adlibber.points += 1;
+            io.to(sessionId).emit('updatePoints', { points: { [adlibber.name]: adlibber.points } });
+        }
     
         // Check if all rounds are completed
         if (session.currentRound >= session.rounds) {
