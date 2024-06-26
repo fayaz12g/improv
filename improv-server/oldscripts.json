@@ -1,0 +1,1222 @@
+[
+  {
+    "script_id": 1,
+    "dialogue": [
+      {"speaker": "2", "text": "Hello, how are you today?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Wait what? Why?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I like cupcakes."}
+    ]
+  },
+  {
+    "script_id": 2,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Why would you say that?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's a little racist..."},
+      {"speaker": "3", "text": "I don't think we should be friends anymore because of that."}
+    ]
+  },
+  {
+    "script_id": 3,
+    "dialogue": [
+      {"speaker": "3", "text": "Did you watch the game last night?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "How could you say that?"},
+      {"speaker": "3", "text": "Well you know what they say..."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 4,
+    "dialogue": [
+      {"speaker": "2", "text": "I just got back from the doctor..."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "That's not even physically possible!"},
+      {"speaker": "2", "text": "I think I need a second opinion."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 5,
+    "dialogue": [
+      {"speaker": "3", "text": "What's your favorite animal?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I've never heard of that before."},
+      {"speaker": "3", "text": "Is it endangered?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 6,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's illegal in at least 12 states!"},
+      {"speaker": "3", "text": "I'm calling the police."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Oh, never mind then."}
+    ]
+  },
+  {
+    "script_id": 7,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your secret talent?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Wow, can you show us?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm both impressed and terrified."}
+    ]
+  },
+  {
+    "script_id": 8,
+    "dialogue": [
+      {"speaker": "3", "text": "I'm thinking of changing careers."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not even a real job!"},
+      {"speaker": "3", "text": "Maybe you're right..."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 9,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's a war crime."},
+      {"speaker": "3", "text": "No, it's just frowned upon in polite society."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Oh, well that makes it okay then."}
+    ]
+  },
+  {
+    "script_id": 10,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your go-to pickup line?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Does that actually work?"},
+      {"speaker": "2", "text": "I'm simultaneously repulsed and intrigued."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 11,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could have any superpower, what would it be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not a superpower, that's just weird."},
+      {"speaker": "3", "text": "I'd watch that movie though."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 12,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's cultural appropriation."},
+      {"speaker": "3", "text": "No, it's just misunderstood art."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I stand corrected."}
+    ]
+  },
+  {
+    "script_id": 13,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your biggest fear?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "That's oddly specific."},
+      {"speaker": "2", "text": "Have you considered therapy?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 14,
+    "dialogue": [
+      {"speaker": "3", "text": "What's your favorite conspiracy theory?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I think I saw a documentary about that once."},
+      {"speaker": "3", "text": "Wasn't that just a fever dream?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 15,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not how physics works!"},
+      {"speaker": "3", "text": "Maybe in an alternate universe..."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I need to lie down."}
+    ]
+  },
+  {
+    "script_id": 16,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your life motto?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Isn't that from a cartoon?"},
+      {"speaker": "2", "text": "No, I think it's Shakespeare."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 17,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could invent anything, what would it be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Pretty sure that violates the laws of thermodynamics."},
+      {"speaker": "3", "text": "And probably several international treaties."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 18,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not what I expected when I woke up this morning."},
+      {"speaker": "3", "text": "Is it too late to go back to bed?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I guess we're doing this then."}
+    ]
+  },
+  {
+    "script_id": 19,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your strangest hobby?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Is that even legal?"},
+      {"speaker": "2", "text": "I'm not sure I want to know more..."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 20,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could time travel, where would you go?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Pretty sure that would cause a paradox."},
+      {"speaker": "3", "text": "Or the best party ever."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 21,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm not sure that's anatomically correct."},
+      {"speaker": "3", "text": "It is for octopi."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Learn something new every day, I guess."}
+    ]
+  },
+  {
+    "script_id": 22,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your best pick-up line?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "I think that only works on Mars."},
+      {"speaker": "2", "text": "Or in very specific bars in Tokyo."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 23,
+    "dialogue": [
+      {"speaker": "3", "text": "What's your most useless talent?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's... oddly specific."},
+      {"speaker": "3", "text": "I bet there's a world championship for that."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 24,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your dream job?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "Is that even a real profession?"},
+      {"speaker": "2", "text": "Sounds more like a nightmare."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 25,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could be any animal, what would you be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's extinct."},
+      {"speaker": "3", "text": "Or maybe it never existed?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 26,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's not how magnets work!"},
+      {"speaker": "3", "text": "Are you sure? It sounds plausible."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I need to rethink everything I know about physics."}
+    ]
+  },
+  {
+    "script_id": 27,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your favorite holiday tradition?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "I think that's outlawed in most countries."},
+      {"speaker": "2", "text": "But it does sound festive!"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 28,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could have dinner with any historical figure, who would it be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Wouldn't they be a bit... decomposed?"},
+      {"speaker": "3", "text": "I guess it depends on your definition of 'dinner'."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 29,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Is that even possible in this dimension?"},
+      {"speaker": "3", "text": "Only on Tuesdays, I think."},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "We should probably alert the authorities."}
+    ]
+  },
+  {
+    "script_id": 30,
+    "dialogue": [
+      {"speaker": "2", "text": "What's your favorite book?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "3", "text": "I don't think that's ever been written."},
+      {"speaker": "2", "text": "Maybe it's from the future?"},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 31,
+    "dialogue": [
+      {"speaker": "3", "text": "If you could be a superhero, what would your power be?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "That's more of a supervillain power, isn't it?"},
+      {"speaker": "3", "text": "I'd read that comic book."},
+      {"speaker": "1", "text": "ADLIB"}
+    ]
+  },
+  {
+    "script_id": 32,
+    "dialogue": [
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "I'm pretty sure that's not how evolution works."},
+      {"speaker": "3", "text": "Maybe in a parallel universe?"},
+      {"speaker": "1", "text": "ADLIB"},
+      {"speaker": "2", "text": "Darwin would be rolling in his grave."}
+    ]
+  },
+    {
+      "script_id": 33,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your favorite childhood memory?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "That sounds traumatizing."},
+        {"speaker": "2", "text": "I think you might need therapy."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 34,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could create a new holiday, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm not sure that's something to celebrate."},
+        {"speaker": "3", "text": "It could be fun with the right crowd."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 35,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Is that even scientifically possible?"},
+        {"speaker": "3", "text": "Only in certain parts of Florida, I think."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "We should probably keep this to ourselves."}
+      ]
+    },
+    {
+      "script_id": 36,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your spirit animal?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I don't think that's a real animal."},
+        {"speaker": "2", "text": "Maybe it's from another dimension?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 37,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could change one law, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm pretty sure that's against human rights."},
+        {"speaker": "3", "text": "Or maybe it's just ahead of its time?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 38,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how the food chain works!"},
+        {"speaker": "3", "text": "Nature finds a way, I guess."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "David Attenborough would have a field day with this."}
+      ]
+    },
+    {
+      "script_id": 39,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your ideal vacation?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I don't think that place exists."},
+        {"speaker": "2", "text": "Sounds more like a fever dream."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 40,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could master any skill instantly, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Is that even considered a skill?"},
+        {"speaker": "3", "text": "It could be useful... somehow."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 41,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how gravity works!"},
+        {"speaker": "3", "text": "Maybe on the moon?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Newton is probably rolling in his grave right now."}
+      ]
+    },
+    {
+      "script_id": 42,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your biggest pet peeve?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "That's... oddly specific."},
+        {"speaker": "2", "text": "I think that says more about you than others."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 43,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could bring back any extinct animal, which would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I don't think that ever existed."},
+        {"speaker": "3", "text": "Jurassic Park was just a movie, you know."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 44,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how the internet works!"},
+        {"speaker": "3", "text": "Maybe in the darkest corners of the web..."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to alert the cyber police."}
+      ]
+    },
+    {
+      "script_id": 45,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your favorite conspiracy theory?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I think you just invented a new one."},
+        {"speaker": "2", "text": "Should we be wearing tinfoil hats?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 46,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could have any fictional technology, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm pretty sure that violates several laws of physics."},
+        {"speaker": "3", "text": "And probably a few ethical guidelines too."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 47,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how time works!"},
+        {"speaker": "3", "text": "Maybe in a parallel universe?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Einstein would have a fit if he heard this."}
+      ]
+    },
+    {
+      "script_id": 48,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your most embarrassing moment?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "How are you even alive after that?"},
+        {"speaker": "2", "text": "I think I'm embarrassed just hearing about it."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 49,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could create a new planet, what would it be like?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I don't think that's how planets work."},
+        {"speaker": "3", "text": "NASA might want to hear about this."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 50,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how evolution works!"},
+        {"speaker": "3", "text": "Maybe after a few million years..."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Darwin is probably face-palming in his grave."}
+      ]
+    },
+    {
+      "script_id": 51,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your biggest irrational fear?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I think that fear might be pretty rational, actually."},
+        {"speaker": "2", "text": "Now I'm scared too."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 52,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could invent a new sport, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm pretty sure that's just legalized violence."},
+        {"speaker": "3", "text": "Or maybe the next Olympic sensation?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 53,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how chemistry works!"},
+        {"speaker": "3", "text": "Unless we're in a Breaking Bad episode..."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to call poison control."}
+      ]
+    },
+    {
+      "script_id": 54,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your strangest dream?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I think Freud would have a field day with that."},
+        {"speaker": "2", "text": "Maybe lay off the cheese before bed?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 55,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could create a new element, what properties would it have?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I don't think the periodic table works that way."},
+        {"speaker": "3", "text": "Chemistry just got a lot more interesting."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 56,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how the human body works!"},
+        {"speaker": "3", "text": "Maybe in a sci-fi movie..."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to alert the medical community."}
+      ]
+    },
+    {
+      "script_id": 57,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your favorite mythical creature?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I don't think that's in any mythology I know."},
+        {"speaker": "2", "text": "Sounds like a Pokemon gone wrong."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 58,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could design a new social media platform, what would it be like?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm not sure that's entirely legal."},
+        {"speaker": "3", "text": "Or ethical. Or sane."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 59,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how weather works!"},
+        {"speaker": "3", "text": "Climate change is getting weirder by the day."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think we need to alert the meteorologists."}
+      ]
+    },
+    {
+      "script_id": 60,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your idea of a perfect day?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "That sounds more like a fever dream."},
+        {"speaker": "2", "text": "I'm not sure that's physically possible in 24 hours."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 61,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could add one subject to school curricula, what would it be?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I'm not sure that's appropriate for children."},
+        {"speaker": "3", "text": "Or adults, for that matter."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 62,
+      "dialogue": [
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "That's not how the economy works!"},
+        {"speaker": "3", "text": "I think you just invented a new economic theory."},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "Nobel Prize in Economics, here we come."}
+      ]
+    },
+    {
+      "script_id": 63,
+      "dialogue": [
+        {"speaker": "2", "text": "What's your most useless talent?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "3", "text": "I'm not sure that qualifies as a talent."},
+        {"speaker": "2", "text": "More like a cry for help."},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+    {
+      "script_id": 64,
+      "dialogue": [
+        {"speaker": "3", "text": "If you could make one species intelligent like humans, which would you choose?"},
+        {"speaker": "1", "text": "ADLIB"},
+        {"speaker": "2", "text": "I think that's how most horror movies start."},
+        {"speaker": "3", "text": "Or the next step in evolution?"},
+        {"speaker": "1", "text": "ADLIB"}
+      ]
+    },
+      {
+        "script_id": 65,
+        "dialogue": [
+          {"speaker": "2", "text": "If you could replace all the world's oceans with any liquid, what would it be?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "Oh god, think of the smell!"},
+          {"speaker": "2", "text": "I'm pretty sure that violates several laws of physics and good taste."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 66,
+        "dialogue": [
+          {"speaker": "3", "text": "You've been chosen to redesign the human body. What's your first change?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "That's horrifying! How would we even... function?"},
+          {"speaker": "3", "text": "Evolution just filed a restraining order against you."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 67,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just invent a new color?"},
+          {"speaker": "3", "text": "My brain hurts trying to imagine that."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "I think you just broke the visible spectrum."}
+        ]
+      },
+      {
+        "script_id": 68,
+        "dialogue": [
+          {"speaker": "2", "text": "You can combine any two animals to create a new species. What's your choice?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That's not a creature, that's a war crime!"},
+          {"speaker": "2", "text": "I think we need to alert the Geneva Convention."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 69,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could add a new sense to humans, what would it be?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "I'm not sure that's a sense... more like a curse."},
+          {"speaker": "3", "text": "Imagine the chaos that would cause!"},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 70,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just rewrite the laws of mathematics?"},
+          {"speaker": "3", "text": "I think you just made numbers cry."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Pythagoras is doing somersaults in his grave."}
+        ]
+      },
+      {
+        "script_id": 71,
+        "dialogue": [
+          {"speaker": "2", "text": "You're in charge of adding a plot twist to human history. What's your change?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That would fundamentally alter the fabric of reality!"},
+          {"speaker": "2", "text": "I think you just broke causality."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 72,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could turn any everyday object into a sentient being, what would you choose?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Oh god, the existential implications of that..."},
+          {"speaker": "3", "text": "I'll never look at that the same way again."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 73,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just invent a new state of matter?"},
+          {"speaker": "3", "text": "I'm pretty sure that defies all known laws of physics."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "The periodic table just filed for bankruptcy."}
+        ]
+      },
+      {
+        "script_id": 74,
+        "dialogue": [
+          {"speaker": "2", "text": "You can replace one bodily function with a machine. What's your choice?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That's not an improvement, that's a nightmare!"},
+          {"speaker": "2", "text": "I think cyborgs just disowned you."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 75,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could add a new planet to our solar system, what would it be like?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "I don't think that's how astrophysics works..."},
+          {"speaker": "3", "text": "NASA just sent you a cease and desist letter."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 76,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just create a new dimension?"},
+          {"speaker": "3", "text": "My brain can't even begin to comprehend that."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "I think you just broke spacetime."}
+        ]
+      },
+      {
+        "script_id": 77,
+        "dialogue": [
+          {"speaker": "2", "text": "You can give one inanimate object the ability to feel emotions. What do you choose?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That's not empathy, that's psychological warfare!"},
+          {"speaker": "2", "text": "I'll never be able to use that again without feeling guilty."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 78,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could create a new law of nature, what would it be?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "That would cause chaos on a universal scale!"},
+          {"speaker": "3", "text": "I think you just made Einstein roll in his grave."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 79,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just invent a new emotion?"},
+          {"speaker": "3", "text": "I feel... I don't know what I feel anymore."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Psychiatrists worldwide are scratching their heads."}
+        ]
+      },
+      {
+        "script_id": 80,
+        "dialogue": [
+          {"speaker": "2", "text": "You can change the color of anything in nature. What's your most chaotic choice?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "My eyes! The goggles do nothing!"},
+          {"speaker": "2", "text": "I think you just broke the concept of camouflage."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 81,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could add a new biological kingdom, what would its organisms be like?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "That's not life as we know it, that's an existential crisis!"},
+          {"speaker": "3", "text": "Darwin just sent a strongly worded letter from beyond the grave."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 82,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just create a new form of matter-energy?"},
+          {"speaker": "3", "text": "I think you just violated the laws of thermodynamics."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "The universe is rebooting to patch this glitch."}
+        ]
+      },
+      {
+        "script_id": 83,
+        "dialogue": [
+          {"speaker": "2", "text": "You can change one historical event. How do you make history absolutely bonkers?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That would unravel the entire timeline!"},
+          {"speaker": "2", "text": "I think you just made time travelers unemployed."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 84,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could merge any two countries, which would create the most chaos?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "That's not geopolitics, that's a recipe for disaster!"},
+          {"speaker": "3", "text": "I think the UN just collectively fainted."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 85,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just invent a new fundamental force of nature?"},
+          {"speaker": "3", "text": "I think you just made quantum physicists cry."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "The Standard Model is writing its resignation letter."}
+        ]
+      },
+      {
+        "script_id": 86,
+        "dialogue": [
+          {"speaker": "2", "text": "You can give any animal human-level intelligence. Which one would cause the most upheaval?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That's not evolution, that's revolution!"},
+          {"speaker": "2", "text": "I for one welcome our new animal overlords."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 87,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could add a new physical constant to the universe, what would it be?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "I think you just made mathematics have an existential crisis."},
+          {"speaker": "3", "text": "The fabric of reality is unraveling as we speak."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 88,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just create a new type of weather?"},
+          {"speaker": "3", "text": "I don't think our umbrellas are designed for... that."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Climate change just got a whole lot more interesting."}
+        ]
+      },
+      {
+        "script_id": 89,
+        "dialogue": [
+          {"speaker": "2", "text": "You can replace any body part with a vegetable. What's your most disturbing choice?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "That's not anatomy, that's a salad gone wrong!"},
+          {"speaker": "2", "text": "I think you just made surgeons and chefs equally confused."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 90,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could add a new chemical element, what impossible properties would it have?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "That's not chemistry, that's alchemy on steroids!"},
+          {"speaker": "3", "text": "I think you just made the periodic table file for divorce."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 91,
+        "dialogue": [
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Did you just invent a new form of energy?"},
+          {"speaker": "3", "text": "I'm pretty sure that violates all known laws of thermodynamics."},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "Physics textbooks worldwide just burst into flames."}
+        ]
+      },
+      {
+        "script_id": 92,
+        "dialogue": [
+          {"speaker": "2", "text": "You can change the taste of anything. What's your most mind-bending flavor combination?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "3", "text": "My taste buds just filed for divorce!"},
+          {"speaker": "2", "text": "I think you just made Gordon Ramsay retire."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+      {
+        "script_id": 93,
+        "dialogue": [
+          {"speaker": "3", "text": "If you could add a new law of physics, what would it be?"},
+          {"speaker": "1", "text": "ADLIB"},
+          {"speaker": "2", "text": "That's not science, that's reality-breaking sorcery!"},
+          {"speaker": "3", "text": "Newton and Einstein are having a fistfight in the afterlife over this."},
+          {"speaker": "1", "text": "ADLIB"}
+        ]
+      },
+        {
+          "script_id": 94,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could turn any word into a sentient being, which would you choose?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "I think dictionaries just became a war zone!"},
+            {"speaker": "2", "text": "Grammar nazis are shaking in their boots."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 95,
+          "dialogue": [
+            {"speaker": "3", "text": "You can replace all hair on Earth with another material. What's your choice?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "That's not fashion, that's a global catastrophe!"},
+            {"speaker": "3", "text": "Barbers worldwide just went out of business."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 96,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just invent a new primary color?"},
+            {"speaker": "3", "text": "My eyes are experiencing emotions they've never felt before."},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Crayola is having an existential crisis."}
+          ]
+        },
+        {
+          "script_id": 97,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new bodily function to humans, what would it be?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "That's not evolution, that's a bio-horror movie!"},
+            {"speaker": "2", "text": "I think you just made doctors reconsider their career choices."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 98,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the shape of any celestial body. Which one and how?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Astronomers worldwide just spat out their coffee!"},
+            {"speaker": "3", "text": "I think you just made astrophysics obsolete."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 99,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just create a new type of particle?"},
+            {"speaker": "3", "text": "The Higgs boson is feeling very insecure right now."},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "CERN is frantically rewriting all their research papers."}
+          ]
+        },
+        {
+          "script_id": 100,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could replace all water on Earth with another liquid, what would it be?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "That's not hydration, that's global annihilation!"},
+            {"speaker": "2", "text": "Fish are picketing outside your house as we speak."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 101,
+          "dialogue": [
+            {"speaker": "3", "text": "You can give any inanimate object the ability to teleport. What's your choice?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "The laws of physics are having a nervous breakdown!"},
+            {"speaker": "3", "text": "I think you just made quantum entanglement jealous."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 102,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just invent a new state of consciousness?"},
+            {"speaker": "3", "text": "Freud and Jung are arm-wrestling in the afterlife over this."},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Psychologists worldwide are updating their textbooks as we speak."}
+          ]
+        },
+        {
+          "script_id": 103,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new biological sex to humans, what would it be like?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "That's not biology, that's a sci-fi fever dream!"},
+            {"speaker": "2", "text": "I think you just made chromosomes file for unemployment."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 104,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the sound of any animal. Which one becomes the most terrifying?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Nature documentaries just became horror films!"},
+            {"speaker": "3", "text": "David Attenborough is reconsidering his career choices."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 105,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just create a new type of atomic bond?"},
+            {"speaker": "3", "text": "Chemistry textbooks are spontaneously combusting worldwide!"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "I think you just made molecular geometry have an identity crisis."}
+          ]
+        },
+        {
+          "script_id": 106,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new ocean to Earth, where would you put it and what would it contain?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "Geographers are having collective aneurysms!"},
+            {"speaker": "2", "text": "I think you just made plate tectonics question its life choices."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 107,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the function of any human organ. What's your most chaotic swap?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Medical schools are burning their curricula as we speak!"},
+            {"speaker": "3", "text": "I think you just made anatomy a choose-your-own-adventure game."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 108,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just invent a new type of dream?"},
+            {"speaker": "3", "text": "Inception is suing you for copyright infringement!"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Sleep researchers are having nightmares about this."}
+          ]
+        },
+        {
+          "script_id": 109,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new physical law to the universe, what would it be?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "Newton just rolled so hard in his grave, he generated electricity!"},
+            {"speaker": "2", "text": "I think you just made the universe's source code crash."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 110,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the texture of any food. Which one becomes the most unsettling?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Gordon Ramsay just had an aneurysm!"},
+            {"speaker": "3", "text": "I think you just made gastronomy a extreme sport."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 111,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just create a new type of matter?"},
+            {"speaker": "3", "text": "The periodic table is having an identity crisis!"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "I think you just made quantum mechanics throw in the towel."}
+          ]
+        },
+        {
+          "script_id": 112,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new season to the year, what would it be like?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "Meteorologists worldwide just quit their jobs!"},
+            {"speaker": "2", "text": "I think you just made climate change feel inadequate."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 113,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the size of any animal. Which one becomes hilariously problematic?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "The food chain just became a non-Euclidean nightmare!"},
+            {"speaker": "3", "text": "I think you just made evolution question its life choices."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 114,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just invent a new type of galaxy?"},
+            {"speaker": "3", "text": "The Hubble telescope is sobbing in a corner!"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "I think you just made dark matter feel like basic."}
+          ]
+        },
+        {
+          "script_id": 115,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new type of weather, what would it be?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "Umbrella manufacturers are having panic attacks!"},
+            {"speaker": "2", "text": "I think you just made Mother Nature file for creative bankruptcy."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 116,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the effect of any emotion. Which one becomes the most chaotic?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Psychologists are burning their degrees as we speak!"},
+            {"speaker": "3", "text": "I think you just made the human condition a choose-your-own-adventure book."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 117,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just create a new type of subatomic particle?"},
+            {"speaker": "3", "text": "The Large Hadron Collider just had a nervous breakdown!"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "I think you just made quantum superposition feel basic."}
+          ]
+        },
+        {
+          "script_id": 118,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new type of natural disaster, what would it be?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "Insurance companies are having collective heart attacks!"},
+            {"speaker": "2", "text": "I think you just made Mother Nature upgrade to Chaos 2.0."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 119,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the life cycle of any plant. Which one becomes absolutely bonkers?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Botanists worldwide are questioning their sanity!"},
+            {"speaker": "3", "text": "I think you just made photosynthesis file for divorce from chlorophyll."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 120,
+          "dialogue": [
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Did you just invent a new type of chemical reaction?"},
+            {"speaker": "3", "text": "The laws of thermodynamics are having an existential crisis!"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "I think you just made entropy throw in the towel."}
+          ]
+        },
+        {
+          "script_id": 121,
+          "dialogue": [
+            {"speaker": "2", "text": "If you could add a new sense to plants, what would it be?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "3", "text": "Vegans are reconsidering their life choices!"},
+            {"speaker": "2", "text": "I think you just made photosynthesis feel inadequate."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        },
+        {
+          "script_id": 122,
+          "dialogue": [
+            {"speaker": "3", "text": "You can change the purpose of any man-made object. Which one causes the most chaos?"},
+            {"speaker": "1", "text": "ADLIB"},
+            {"speaker": "2", "text": "Engineers worldwide just had simultaneous nervous breakdowns!"},
+            {"speaker": "3", "text": "I think you just made function follow form in the most twisted way possible."},
+            {"speaker": "1", "text": "ADLIB"}
+          ]
+        }
+  ]
