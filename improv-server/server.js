@@ -21,7 +21,7 @@ let sessions = {};
 
 // Load scripts from JSON file
 const scripts = JSON.parse(fs.readFileSync('./scripts.json', 'utf8'));
-console.log('Loaded scripts:', scripts);
+console.log('Loaded scripts.');
 
 io.on('connection', (socket) => {
     console.log('New client connected:', socket.id);
@@ -115,11 +115,15 @@ io.on('connection', (socket) => {
             const guesser = session.players.find(player => session.roles[player.socketId] === 'Guesser');
             guesser.points += 1;
             io.to(sessionId).emit('updatePoints', { points: { [guesser.name]: guesser.points } });
+            console.log("The Guesser has found the Adlibber.");
+            console.log(guesser.name, "now has", guesser.points, 'points.');
         }
         else {
             // Adlibber wins
             adlibber.points += 1;
             io.to(sessionId).emit('updatePoints', { points: { [adlibber.name]: adlibber.points } });
+            console.log("The Adlibber has fooled the Guesser.");
+            console.log(adlibber.name, "now has", adlibber.points, 'points.');
         }
     
         // Check if all rounds are completed
