@@ -7,7 +7,7 @@ import PlayerScreen from './PlayerScreen';
 import HostScreen from './HostScreen';
 
 function App() {
-    const [ipAddress, setIpAddress] = useState('');
+    const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
     const [serverIP, setServerIP] = useState('');
     const [role, setRole] = useState(null);
     const [socket, setSocket] = useState(null);
@@ -28,21 +28,41 @@ function App() {
     const [connectionError, setConnectionError] = useState(false); 
     const [connectionWaiting, setConnectionWaiting] = useState(false);
     const [theme, setTheme] = useState('light');
-    const [clientVersion, setClientV] = useState('0.0.3 Slide');
+    const [clientVersion] = useState('0.0.3 Slide');
     const [serverVersion, setServerV] = useState('Disconnected');
 
     useEffect(() => {
         if (socket) {
+            console.log('Successfully connected to the server');
+            if (sessionStorage.getItem('playerId') == null) {
+                console.log('socket id: ' + socket.id);
+                sessionStorage.setItem('playerId', socket.id);
+            }
+            if (sessionStorage.getItem('role') === 'host' && sessionStorage.getItem('sessionId')) {
+                setRole('host')
+                setSessionCreated(true)
+                setSessionId(sessionStorage.getItem('sessionId'));
+                socket.emit('reconnectHost', { sessionId: sessionId.toUpperCase() });
+            }
+        } else {
+            if (ipAddress) {
+                connectToServer();
+            }
+        }
+    }, [socket]);
+
+    useEffect(() => {
+        if (socket) {                
             socket.on('connect', () => {
-                console.log('Successfully connected to the server');
                 setConnectionError(false); // Reset connection error state on successful connection
             });
             socket.on('sessionCreated', ({ sessionId }) => {
                 const shortSessionId = sessionId.substr(0, 4).toUpperCase();
                 setSessionId(shortSessionId);
+                sessionStorage.setItem('sessionId', shortSessionId);
                 setSessionCreated(true);
             });
-            socket.on('playerJoined', ({ players }) => {
+            socket.on('updatePlayers', ({ players }) => {
                 setPlayers(players);
             });
             socket.on('gameStarted', ({ rounds, roles, currentround }) => {
@@ -82,27 +102,35 @@ function App() {
             setCurrentLine(null);
         });
 
-            socket.on('updateLine', ({ line, isAdlib, isSpeaker }) => {
-                setCurrentLine({ text: line, isAdlib });
-                setIsSpeaker(isSpeaker);
-                setIsEndScene(false);
-            });
-            socket.on('updatePoints', ({ points }) => {
-                setLeaderboard(prevLeaderboard => ({
-                    ...prevLeaderboard,
-                    ...points
-                }));
-                console.log("Updating leaderboard");
-            });
-            socket.on('endScene', () => {
-                setIsEndScene(true);
-                setIsSpeaker(false);
-            });
-            socket.on('endGame', () => {
-                setIsEndGame(true);
-            });
-        }
-        document.body.className = theme;
+        socket.on('updateLine', ({ line, isAdlib, isSpeaker }) => {
+            setCurrentLine({ text: line, isAdlib });
+            setIsSpeaker(isSpeaker);
+            setIsEndScene(false);
+        });
+        socket.on('updatePoints', ({ points }) => {
+            setLeaderboard(prevLeaderboard => ({
+                ...prevLeaderboard,
+                ...points
+            }));
+            console.log("Updating leaderboard");
+        });
+        socket.on('endScene', () => {
+            setIsEndScene(true);
+            setIsSpeaker(false);
+        });
+        socket.on('endGame', () => {
+            setIsEndGame(true);
+        });
+        socket.on('reconnect', ({name, sessionId, players}) => {
+            setRole('player');
+            setPlayerName(name);
+            setPlayers(players);
+            setSessionId(sessionId);
+            setJoinedSession(true);
+            sessionStorage.setItem('playerId', socket.id);
+        })
+    }
+    document.body.className = theme;
     }, [socket, players, role, leaderboard, theme]);
 
     const toggleTheme = () => {
@@ -114,6 +142,7 @@ function App() {
         const url = `${protocol}://${ipAddress}:3000`;
         const newSocket = io(url, {
             transports: ['websocket'],
+            query: {playerId: sessionStorage.getItem('playerId')}
         });
         setConnectionError(false);
         setConnectionWaiting(true);
@@ -128,6 +157,7 @@ function App() {
         newSocket.on('connect', data => {
           setSocket(newSocket);
           setConnectionWaiting(false);
+          sessionStorage.setItem('ipAddress', ipAddress);
         });
         newSocket.on('serverVersion', (version) => {
           setServerV(version);
@@ -147,6 +177,7 @@ function App() {
         if (socket && sessionId && playerName) {
             socket.emit('joinSession', { sessionId: sessionId.toUpperCase(), playerName });
             setJoinedSession(true);
+            sessionStorage.setItem("playerId", socket.id);
         }
     };
 
@@ -220,8 +251,8 @@ function App() {
             </div>
         ) : !role ? (
             <div>
-                <button onClick={() => setRole('host')}>Host</button>
-                <button onClick={() => setRole('player')}>Player</button>
+                <button onClick={() => {setRole('host'); sessionStorage.setItem('role', 'host')}}>Host</button>
+                <button onClick={() => {setRole('player'); sessionStorage.setItem('role', 'player')}}>Player</button>
             </div>
         ) : role === 'host' ? (
             renderHostScreen()

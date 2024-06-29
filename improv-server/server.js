@@ -24,6 +24,29 @@ const scripts = JSON.parse(fs.readFileSync('./scripts.json', 'utf8'));
 console.log('Loaded scripts.');
 
 io.on('connection', (socket) => {
+    const playerId = socket.handshake.query.playerId;
+    if (socket.id !== playerId) {
+        console.log(`Attemping to reconnect ${socket.id} as ${playerId}`);
+        for (const shortSessionId in sessions) {
+            const session = sessions[shortSessionId];
+            console.log('checking ' + shortSessionId);
+            
+            const player = session.players.find(player => playerId === player.socketId);
+            if (player) {
+                const playerIdx = session.players.indexOf(player);
+                sessions[shortSessionId].players[playerIdx].socketId = socket.id;
+                // player.socketId = socket.id;
+                console.log(`New player array as follows:`);
+                // console.log(player);
+                socket.join(shortSessionId);
+                socket.emit('reconnect', {name: player.name, sessionId: shortSessionId, players: session.players});
+                for (const player in session) {
+                    socket.emit('updatePoints', { points: { [player.name]: player.points } })
+                }
+            }
+        }
+    }
+
     console.log('New client connected:', socket.id);
 
     // Emit the server version to the client upon connection
@@ -54,9 +77,19 @@ io.on('connection', (socket) => {
         console.warn('Server IP address not found.');
     }
 
+    socket.on('reconnectHost', ({ sessionId }) => {
+        if (sessions[sessionId]) {
+            socket.join(sessionId);
+            socket.emit('updatePlayers', { players: sessions[sessionId].players });
+            for (const player in sessions[sessionId]) {
+                socket.emit('updatePoints', { points: { [player.name]: player.points } })
+            }
+        }
+    });
+
     socket.on('createSession', () => {
         const sessionId = Math.random().toString(36).substring(2, 15);
-        const shortSessionId = sessionId.substr(0, 4).toUpperCase();
+        const shortSessionId = sessionId.substring(0, 4).toUpperCase();
         sessions[shortSessionId] = { 
             sessionId: shortSessionId, 
             players: [],
@@ -76,7 +109,8 @@ io.on('connection', (socket) => {
         if (sessions[sessionId]) {
             sessions[sessionId].players.push({ name: playerName, socketId: socket.id, points: 0 });
             socket.join(sessionId);
-            io.to(sessionId).emit('playerJoined', { players: sessions[sessionId].players });
+            io.to(sessionId).emit('updatePlayers', { players: sessions[sessionId].players });
+            console.log(sessions[sessionId].players);
             console.log('Player joined session:', sessionId, playerName);
         } else {
             socket.emit('error', 'Session not found');
