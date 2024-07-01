@@ -28,7 +28,7 @@ function App() {
     const [connectionWaiting, setConnectionWaiting] = useState(false);
     const [kicked, setKicked] = useState(false);
     const [theme, setTheme] = useState('light');
-    const [clientVersion] = useState('0.0.3 Slide');
+    const [clientVersion] = useState('0.0.4 Sleepless');
     const [serverVersion, setServerV] = useState('Disconnected');
     let [sessionList, setSessionList] = useState([]);
     const [sessionCreated, setSessionCreated] = useState(() => {
