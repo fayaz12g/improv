@@ -103,9 +103,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createSession', () => {
-        const sessionId = currentSession++;
+        const shortSessionId = currentSession++;
         // const sessionId = Math.random().toString(36).substring(2, 15);
-        const shortSessionId = sessionId.substring(0, 4).toUpperCase();
+        // const shortSessionId = sessionId.substring(0, 4).toUpperCase();
         sessions[shortSessionId] = { 
             sessionId: shortSessionId, 
             players: [],

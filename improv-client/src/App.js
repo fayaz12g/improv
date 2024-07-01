@@ -110,7 +110,8 @@ function App() {
                 setConnectionError(false); // Reset connection error state on successful connection
             });
             socket.on('sessionCreated', ({ sessionId }) => {
-                const shortSessionId = sessionId.substr(0, 4).toUpperCase();
+                // const shortSessionId = sessionId.substr(0, 4).toUpperCase();
+                const shortSessionId = sessionId;
                 setSessionId(shortSessionId);
                 sessionStorage.setItem('sessionId', shortSessionId);
                 setSessionCreated(true);
