@@ -5,6 +5,7 @@ import './title.png';
 import titleImage from './title.png';
 import PlayerScreen from './PlayerScreen';
 import HostScreen from './HostScreen';
+import titleTheme from './theme.mp3';
 
 function App() {
     const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
@@ -28,13 +29,52 @@ function App() {
     const [connectionWaiting, setConnectionWaiting] = useState(false);
     const [kicked, setKicked] = useState(false);
     const [theme, setTheme] = useState('light');
-    const [clientVersion] = useState('0.0.4 Sleepless');
+    const [clientVersion] = useState('0.5 Sleepless Part Two');
     const [serverVersion, setServerV] = useState('Disconnected');
     let [sessionList, setSessionList] = useState([]);
     const [sessionCreated, setSessionCreated] = useState(() => {
         const storedValue = sessionStorage.getItem('sessionCreated');
         return storedValue === 'true' ? true : false;
       });
+
+
+      useEffect(() => {
+        const audio = new Audio(titleTheme);
+        let isPlaying = false;
+
+        const playAudio = () => {
+            isPlaying = true;
+            audio.play();
+        };
+
+        const restartAudio = () => {
+            audio.currentTime = 36; // Restart at 32 seconds
+        };
+
+        const handleInteraction = () => {
+            if (!isPlaying) {
+                playAudio();
+            }
+        };
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.currentTime >= 72) {
+                restartAudio();
+            }
+        });
+
+        document.addEventListener('click', handleInteraction);
+        document.addEventListener('touchstart', handleInteraction);
+
+        return () => {
+            document.removeEventListener('click', handleInteraction);
+            document.removeEventListener('touchstart', handleInteraction);
+            audio.removeEventListener('timeupdate', () => {});
+            audio.pause();
+            audio.currentTime = 0;
+        };
+    }, []);
+
 
     useEffect(() => {
         if (socket) {
