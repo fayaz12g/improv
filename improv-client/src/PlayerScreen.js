@@ -51,8 +51,15 @@ const PlayerScreen = ({
                       style={{ fontWeight: 'bold' }}
                       key={sessionId}
                       onClick={() => handleJoinClick(sessionId)}
-                    >
-                      Join <br></br>{sessionId}
+                      >
+                      {sessionList.length === 1 ? (
+                        "Join Session"
+                      ) : (
+                        <>
+                          Join Session <br />
+                          {sessionId}
+                        </>
+                      )}
                     </button>
                   ))
                 ) : (
