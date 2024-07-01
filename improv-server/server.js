@@ -18,6 +18,7 @@ const io = socketIO(server);
 app.use(express.static('build'));
 
 let sessions = {};
+let currentSession = 0;
 
 // Load scripts from JSON file
 const scripts = JSON.parse(fs.readFileSync('./scripts.json', 'utf8'));
@@ -102,7 +103,8 @@ io.on('connection', (socket) => {
     });
 
     socket.on('createSession', () => {
-        const sessionId = Math.random().toString(36).substring(2, 15);
+        const sessionId = currentSession++;
+        // const sessionId = Math.random().toString(36).substring(2, 15);
         const shortSessionId = sessionId.substring(0, 4).toUpperCase();
         sessions[shortSessionId] = { 
             sessionId: shortSessionId, 
