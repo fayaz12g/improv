@@ -341,6 +341,7 @@ body.dark {
   left: 20px;
   color: var(--toggle-color);
   transition: color 0.9s ease;
+  text-align: left;
 }
 
 .scale-200 {
