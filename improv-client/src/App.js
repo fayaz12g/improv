@@ -48,7 +48,7 @@ function App() {
         };
 
         const restartAudio = () => {
-            audio.currentTime = 36; // Restart at 32 seconds
+            audio.currentTime = 24; // Restart at 32 seconds
         };
 
         const handleInteraction = () => {
