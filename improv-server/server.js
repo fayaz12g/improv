@@ -105,7 +105,16 @@ io.on('connection', (socket) => {
     socket.on('createSession', () => {
         // const sessionId = Math.random().toString(36).substring(2, 15).replace(/[0-9]/g, '');
         // const shortSessionId = sessionId.substring(0, 4).toUpperCase();
-        const shortSessionId = ++currentSession;
+        const sessionId = ++currentSession;
+        let shortSessionId;
+
+        if (sessionId <= 26) {
+          // Convert to letter A-Z
+          shortSessionId = String.fromCharCode(64 + sessionId);
+        } else {
+          // Use the number directly
+          shortSessionId = shortSessionId;
+        }
         sessions[shortSessionId] = { 
             sessionId: shortSessionId, 
             players: [],
