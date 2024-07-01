@@ -20,16 +20,29 @@ function App() {
     const [currentRound, setCurrentRound] = useState(1);
     const [playerRole, setPlayerRole] = useState(null);
     const [leaderboard, setLeaderboard] = useState({});
-    const [sessionCreated, setSessionCreated] = useState(false);
     const [joinedSession, setJoinedSession] = useState(false);
     const [isEndScene, setIsEndScene] = useState(false);
     const [isEndGame, setIsEndGame] = useState(false);
     const [isSpeaker, setIsSpeaker] = useState(false);
     const [connectionError, setConnectionError] = useState(false); 
     const [connectionWaiting, setConnectionWaiting] = useState(false);
+    const [kicked, setKicked] = useState(false);
     const [theme, setTheme] = useState('light');
     const [clientVersion] = useState('0.0.3 Slide');
     const [serverVersion, setServerV] = useState('Disconnected');
+    let [sessionList, setSessionList] = useState([]);
+    const [sessionCreated, setSessionCreated] = useState(() => {
+        const storedValue = sessionStorage.getItem('sessionCreated');
+        return storedValue === 'true' ? true : false;
+      });
+
+    useEffect(() => {
+        if (socket) {
+            if (role === 'host' && sessionCreated === false) {
+        createSession()
+            }
+        }
+    }, [role]);
 
     useEffect(() => {
         if (socket) {
@@ -64,6 +77,15 @@ function App() {
             });
             socket.on('updatePlayers', ({ players }) => {
                 setPlayers(players);
+            });
+            socket.on('playerRemoved', ({ removedPlayer }) => {
+                console.log(`I heard that ${removedPlayer} was removed. He must've been a bad boy.`)
+                // if playerName equals removedPlayer, then reset all variables and storage
+                if (playerName===removedPlayer) {
+                    resetEverything()
+
+                    setKicked(true);
+                }
             });
             socket.on('gameStarted', ({ rounds, roles, currentround }) => {
               setRounds(rounds);
@@ -118,6 +140,20 @@ function App() {
             setIsEndScene(true);
             setIsSpeaker(false);
         });
+
+        socket.on('availableSessions', (sessions) => {
+            setSessionList(sessions);
+         // Check if sessionList contains at least one session
+            if (sessions.length > 0) {
+                // Check if role in sessionStorage is not 'host'
+                const storedRole = sessionStorage.getItem('role');
+                if (storedRole !== 'host') {
+                setRole('player');
+                }
+            }
+        });
+        
+
         socket.on('endGame', () => {
             setIsEndGame(true);
         });
@@ -137,9 +173,41 @@ function App() {
       setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
+    const resetEverything = () => {
+        // Reset everything to default
+        setRole(null);
+        setIpAddress('');
+        setPlayerName('');
+        setJoinedSession(false);
+        setRounds(0);
+        setPlayers([]);
+        setSessionId('');
+        setSocket(null);
+        setSessionList([]);
+        
+        // Clear out your storage, you're fired!
+        sessionStorage.clear();
+        
+    }
     const connectToServer = () => {
         const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-        const url = `${protocol}://${ipAddress}:3000`;
+
+        const octets = ipAddress.split('.'); // Split the ipAddress into octets
+
+        let fullIpAddress;
+      
+        if (octets.length === 1) {
+          // If only one octet
+          fullIpAddress = `192.168.86.${octets[0]}`;
+        } else if (octets.length === 2) {
+          // If two octets
+          fullIpAddress = `192.168.${octets[0]}.${octets[1]}`;
+        } else {
+          // Fallback for unexpected input
+          fullIpAddress = ipAddress;
+        }
+
+        const url = `${protocol}://${fullIpAddress}:3000`;
         const newSocket = io(url, {
             transports: ['websocket'],
             query: {playerId: sessionStorage.getItem('playerId')}
@@ -170,6 +238,7 @@ function App() {
     const createSession = () => {
         if (socket) {
             socket.emit('createSession');
+            sessionStorage.setItem('sessionCreated', true);
         }
     };
     
@@ -199,8 +268,14 @@ function App() {
         }
     };
 
+    const removePlayer = (playerToRemove) => {
+        console.log(`Asked the server to remove ${playerToRemove}`)
+        socket.emit('removePlayer', { sessionId, playerToRemove });
+      };
+
     const renderHostScreen = () => (
       <HostScreen
+        socket={socket}
         ipAddress={serverIP}
         sessionCreated={sessionCreated}
         createSession={createSession}
@@ -211,7 +286,9 @@ function App() {
         setRounds={setRounds}
         startGame={startGame}
         currentRound={currentRound}
+        sessionList={sessionList}
         leaderboard={leaderboard}
+        removePlayer={removePlayer}
       />
     );
 
@@ -232,7 +309,9 @@ function App() {
         isSpeaker={isSpeaker}
         nextLine={nextLine}
         guessAdlibber={guessAdlibber}
+        sessionList={sessionList}
         leaderboard={leaderboard}
+        kicked={kicked}
       />
     );
 
@@ -243,9 +322,13 @@ function App() {
                 <div className="centered-image-container">
                     <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
                 </div>
-                {!connectionWaiting && <h2>Connect to a server:</h2>}
-                {!connectionWaiting && <input type="text" value={ipAddress} onChange={(e) => setIpAddress(e.target.value)} />}
-                {!connectionWaiting && <button onClick={connectToServer}>Connect</button>}
+                {!connectionWaiting && !kicked && <h2>Room Code:</h2>}
+                {kicked && <h2 style={{ color: 'red' }}>You have been kicked by the host.</h2>}
+                {!connectionWaiting && !kicked && <input type="text" 
+                value={ipAddress} 
+                placeholder="Or the Server IP"
+                onChange={(e) => setIpAddress(e.target.value)} />}
+                {!connectionWaiting && !kicked && <button onClick={connectToServer}>Connect</button>}
                 {connectionWaiting && <h2>Attempting connection, please wait.</h2>}
                 {connectionError && <p style={{ color: 'red' }}>Connection failed. Please check the IP address and try again.</p>}
             </div>

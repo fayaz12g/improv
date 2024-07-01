@@ -52,6 +52,11 @@ io.on('connection', (socket) => {
     // Emit the server version to the client upon connection
     socket.emit('serverVersion', serverVersion); 
 
+    // Emit the availale sessions to the client upon connection
+    const sessionIds = Object.keys(sessions);
+    socket.emit('availableSessions', sessionIds); 
+    console.log(`Sent ${sessionIds} to client`)
+
     // Get the server's IP address
     const networkInterfaces = os.networkInterfaces();
     let serverIpAddress = null;
@@ -72,7 +77,16 @@ io.on('connection', (socket) => {
 
     // Emit the server IP address to the client
     if (serverIpAddress) {
-        socket.emit('serverIpAddress', serverIpAddress);
+        let shortenedIP = serverIpAddress
+        const octets = serverIpAddress.split('.'); // Split the IP address into octets
+        if (octets[0] === '192' && octets[1] === '168') {
+        if (octets[2] === '86') {
+            shortenedIP = octets[3]; // Only the fourth octet
+        } else {
+            shortenedIP = `${octets[2]}.${octets[3]}`; // The last two octets
+        }
+    }
+        socket.emit('serverIpAddress', shortenedIP);
     } else {
         console.warn('Server IP address not found.');
     }
@@ -97,8 +111,8 @@ io.on('connection', (socket) => {
             currentLineIndex: 0,
             roles: {},
             currentSpeaker: null,
-            currentRound: 0, // Initialize current round
-            rounds: 0 // Initialize total rounds (to be set later)
+            currentRound: 0,
+            rounds: 0
         };
         socket.join(shortSessionId);
         socket.emit('sessionCreated', { sessionId: shortSessionId });
@@ -116,6 +130,29 @@ io.on('connection', (socket) => {
             socket.emit('error', 'Session not found');
         }
     });
+
+    socket.on('removePlayer', ({ sessionId, playerToRemove }) => {
+        if (sessions[sessionId]) {
+          const playerIndex = sessions[sessionId].players.findIndex(player => player.name === playerToRemove);
+          
+          if (playerIndex !== -1) {
+            // Remove the player from the array
+            const removedPlayer = sessions[sessionId].players.splice(playerIndex, 1)[0];
+            
+            console.log(`${removedPlayer.name} has been removed from session ${sessionId}`);
+            
+            // Optionally, you might want to notify other clients about the player removal
+            io.to(sessionId).emit('playerRemoved', {  
+              removedPlayer: removedPlayer.name 
+            });
+            io.to(sessionId).emit('updatePlayers', { players: sessions[sessionId].players });
+          } else {
+            console.log(`Player ${playerToRemove} not found in session ${sessionId}`);
+          }
+        } else {
+          console.log(`Session ${sessionId} not found`);
+        }
+      });
 
     socket.on('startGame', ({ sessionId, rounds }) => {
         console.log(`Starting game for session ${sessionId} with ${rounds} rounds`);
