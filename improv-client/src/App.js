@@ -283,11 +283,14 @@ function App() {
         }
     };
     
-    const joinSession = () => {
-        if (socket && sessionId && playerName) {
-            socket.emit('joinSession', { sessionId: sessionId.toUpperCase(), playerName });
+    const joinSession = (clickedSessionId) => {
+        if (socket && playerName) {
+            socket.emit('joinSession', { clickedSessionId, playerName });
             setJoinedSession(true);
             sessionStorage.setItem("playerId", socket.id);
+        }
+        if (!playerName) {
+            console.log("No player name when trying to join!")
         }
     };
 

@@ -26,7 +26,7 @@ const PlayerScreen = ({
     if (!playerName)
       setNoName(true);
     setSessionId(sessionId);
-    joinSession();
+    joinSession(sessionId);
   };
 
   return (
