@@ -47,7 +47,7 @@ const HostScreen = ({
         <button onClick={createSession}>Create Session</button>
       ) : !gameStarted ? (
         <div>
-          <h3>Session ID: {sessionId}</h3>
+          <h3>Session Number: {sessionId}</h3>
           <h4>Players:</h4>
           <ul>
             {players.map((player) => (
