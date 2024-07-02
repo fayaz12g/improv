@@ -2,15 +2,15 @@
 
 @font-face {
   font-family: 'Alloy Ink';
-  src: url('./AlloyInk-nRLyO.ttf') format('truetype'),
-       url('./AlloyInk-lgdWw.otf') format('opentype');
+  src: url('./font/AlloyInk-nRLyO.ttf') format('truetype'),
+       url('./font/AlloyInk-lgdWw.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Quill Ink';
-  src: url('./Ink.ttf') format('truetype');
+  src: url('./font/Ink.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

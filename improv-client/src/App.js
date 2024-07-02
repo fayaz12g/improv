@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
-import './title.png';
-import titleImage from './title.png';
-import PlayerScreen from './PlayerScreen';
-import HostScreen from './HostScreen';
+import titleImage from './image/title.png';
+import PlayerScreen from './apps/PlayerScreen';
+import HostScreen from './apps//HostScreen';
 import titleTheme from './sound/theme.m4a';
 import speakingTheme from './sound/speaking.m4a';
 import guessingTheme from './sound/guessing.m4a';
 import finishTheme from './sound/finish.m4a';
-import BackgroundMusic from './BackgroundMusic';
+import BackgroundMusic from './apps/BackgroundMusic';
 
 function App() {
     const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
