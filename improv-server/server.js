@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const express = require('express');
 const socketIO = require('socket.io');
-const serverVersion = '0.5 Sleepless Part Two';
+const serverVersion = '0.6 Sonic Alpha';
 const os = require('os');
 
 const app = express();

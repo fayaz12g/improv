@@ -29,7 +29,7 @@ function App() {
     const [connectionWaiting, setConnectionWaiting] = useState(false);
     const [kicked, setKicked] = useState(false);
     const [theme, setTheme] = useState('light');
-    const [clientVersion] = useState('0.5 Sleepless Part Two');
+    const [clientVersion] = useState('0.6 Sonic Alpha');
     const [serverVersion, setServerV] = useState('Disconnected');
     let [sessionList, setSessionList] = useState([]);
     const [sessionCreated, setSessionCreated] = useState(() => {
