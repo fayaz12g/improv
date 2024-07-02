@@ -5,7 +5,7 @@ import './title.png';
 import titleImage from './title.png';
 import PlayerScreen from './PlayerScreen';
 import HostScreen from './HostScreen';
-import titleTheme from './theme.mp3';
+import titleTheme from './sound/theme.m4a';
 
 function App() {
     const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
