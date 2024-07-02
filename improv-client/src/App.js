@@ -60,7 +60,7 @@ function App() {
         };
 
         audio.addEventListener('timeupdate', () => {
-            if (audio.currentTime >= 71) { // Should loop at 72 to 24, adjusted down a second for delay
+            if (audio.currentTime >= 72) { // Should loop at 72 to 24, adjusted down a second for delay
                 restartAudio();
             }
         });
