@@ -6,6 +6,7 @@ import titleImage from './title.png';
 import PlayerScreen from './PlayerScreen';
 import HostScreen from './HostScreen';
 import titleTheme from './sound/theme.m4a';
+import BackgroundMusic from './BackgroundMusic';
 
 function App() {
     const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
@@ -36,45 +37,6 @@ function App() {
         const storedValue = sessionStorage.getItem('sessionCreated');
         return storedValue === 'true' ? true : false;
       });
-
-
-      useEffect(() => {
-        const audio = new Audio(titleTheme);
-        let isPlaying = false;
-
-        const playAudio = () => {
-            isPlaying = true;
-            audio.play();
-        };
-
-        const restartAudio = () => {
-            audio.currentTime = 24; // Restart at 24 seconds
-
-        };
-
-        const handleInteraction = () => {
-            if (!isPlaying) {
-                playAudio();
-            }
-        };
-
-        audio.addEventListener('timeupdate', () => {
-            if (audio.currentTime >= 72) { // Should loop at 72 to 24
-                restartAudio();
-            }
-        });
-
-        document.addEventListener('click', handleInteraction);
-        document.addEventListener('touchstart', handleInteraction);
-
-        return () => {
-            document.removeEventListener('click', handleInteraction);
-            document.removeEventListener('touchstart', handleInteraction);
-            audio.removeEventListener('timeupdate', () => {});
-            audio.pause();
-            audio.currentTime = 0;
-        };
-    }, []);
 
 
     useEffect(() => {
@@ -364,6 +326,7 @@ function App() {
   <div className="App">
         {!socket ? (
             <div>
+                <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.5} />
                 <div className="centered-image-container">
                     <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
                 </div>
