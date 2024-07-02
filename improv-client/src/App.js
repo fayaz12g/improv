@@ -48,8 +48,9 @@ function App() {
         };
 
         const restartAudio = () => {
-            // audio.currentTime = 24; // Restart at 32 seconds
-            audio.play();
+            audio.currentTime = 24; // Restart at 24 seconds
+            // const secondaudio = new Audio(titleTheme);
+            // secondaudio.play();
         };
 
         const handleInteraction = () => {
@@ -59,7 +60,7 @@ function App() {
         };
 
         audio.addEventListener('timeupdate', () => {
-            if (audio.currentTime >= 71) { // change to 72 to make better loop
+            if (audio.currentTime >= 71) { // Should loop at 72 to 24, adjusted down a second for delay
                 restartAudio();
             }
         });
