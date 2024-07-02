@@ -80,7 +80,7 @@ const HostScreen = ({
         </div>
       ) : !isEndScene ? (
         <div>
-          <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} />
+          {/* <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} /> */}
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>{currentLine?.text}</h3>
           <h4>Leaderboard:</h4>
@@ -95,7 +95,7 @@ const HostScreen = ({
       )
       : (
         <div>
-          <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={12} />
+          {/* <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={12} isPlaying={!isEndScene}/> */}
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>The Guesser is Guessing</h3>
           <h4>Leaderboard:</h4>

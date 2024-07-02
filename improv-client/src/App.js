@@ -336,9 +336,11 @@ function App() {
 
   return (
   <div className="App">
+        <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} isPlaying={isEndScene}/>
+        <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
+        <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} isPlaying={!gameStarted} />
         {!socket ? (
             <div>
-                <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} />
                 <div className="centered-image-container">
                     <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
                 </div>

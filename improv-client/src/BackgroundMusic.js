@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const BackgroundMusic = ({ audioSrc, loopStart, loopEnd }) => {
+const BackgroundMusic = ({ audioSrc, loopStart = 24, loopEnd = 72, isPlaying = true }) => {
   const audioRef = useRef(null);
   const isPlayingRef = useRef(false);
 
@@ -9,7 +9,7 @@ const BackgroundMusic = ({ audioSrc, loopStart, loopEnd }) => {
     audioRef.current = audio;
 
     const playAudio = () => {
-      if (!isPlayingRef.current) {
+      if (!isPlayingRef.current && isPlaying) {
         audio.play();
         isPlayingRef.current = true;
       }
@@ -23,7 +23,9 @@ const BackgroundMusic = ({ audioSrc, loopStart, loopEnd }) => {
 
     const handleEnded = () => {
       audio.currentTime = loopStart;
-      audio.play();
+      if (isPlaying) {
+        audio.play();
+      }
     };
 
     const handleInteraction = () => {
@@ -47,7 +49,19 @@ const BackgroundMusic = ({ audioSrc, loopStart, loopEnd }) => {
       audio.pause();
       audio.currentTime = 0;
     };
-  }, [audioSrc, loopStart, loopEnd]);
+  }, [audioSrc, loopStart, loopEnd, isPlaying]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      if (isPlaying) {
+        audio.play().catch(error => console.error("Error playing audio:", error));
+      } else {
+        audio.pause();
+        isPlayingRef.current = false;
+      }
+    }
+  }, [isPlaying]);
 
   return null; // This component doesn't render anything
 };
