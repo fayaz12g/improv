@@ -303,6 +303,7 @@ function App() {
         isEndScene={isEndScene}
         speakingTheme={speakingTheme}
         guessingTheme={guessingTheme}
+        currentLine={currentLine}
       />
     );
 

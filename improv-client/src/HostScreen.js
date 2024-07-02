@@ -20,6 +20,7 @@ const HostScreen = ({
   isEndScene,
   speakingTheme,
   guessingTheme,
+  currentLine,
 }) => {
   const handleRemovePlayer = (playerToRemove) => {
     removePlayer(playerToRemove)
@@ -81,7 +82,7 @@ const HostScreen = ({
         <div>
           <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} />
           <h3>Round: {currentRound}/{rounds}</h3>
-          <h3>Someone is talking!</h3>
+          <h3>{currentLine?.text}</h3>
           <h4>Leaderboard:</h4>
           <ul>
             {Object.entries(leaderboard)

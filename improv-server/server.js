@@ -125,6 +125,7 @@ io.on('connection', (socket) => {
             currentRound: 0,
             rounds: 0
         };
+        sessions[shortSessionId].hostSocket = socket.id;
         socket.join(shortSessionId);
         socket.emit('sessionCreated', { sessionId: shortSessionId });
         console.log('Session created with ID:', shortSessionId);
@@ -350,6 +351,11 @@ function nextLine(sessionId) {
             io.to(guesserSocket).emit('updateLine', { line: `${speakerName} is speaking...`, isAdlib: false, isSpeaker: false });
         } else {
             console.error('No guesser found in the session');
+        }
+
+        // Send the current line to the host
+        if (session.hostSocket) {
+            io.to(session.hostSocket).emit('updateLine', { line: `${speakerName} is speaking...`, isAdlib: false, isSpeaker: false });
         }
 
         session.currentLineIndex++;
