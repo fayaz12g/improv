@@ -26,11 +26,11 @@ const PlayerScreen = ({
 }) => {
   const [noName, setNoName] = useState(false);
 
-  const handleJoinClick = (sessionId) => {
+  const handleJoinClick = (sessionIds) => {
+    setSessionId(sessionIds);
     if (!playerName)
       setNoName(true);
-    setSessionId(sessionId);
-    joinSession(sessionId);
+    joinSession(sessionIds);
   };
 
   return (
@@ -50,18 +50,18 @@ const PlayerScreen = ({
               </div>
               <div>
               {Array.isArray(sessionList) && sessionList.length > 0 ? (
-                  sessionList.map((sessionId) => (
+                  sessionList.map((sessionIds) => (
                     <button
                       style={{ fontWeight: 'bold' }}
-                      key={sessionId}
-                      onClick={() => handleJoinClick(sessionId)}
+                      key={sessionIds}
+                      onClick={() => handleJoinClick(sessionIds)}
                       >
                       {sessionList.length === 1 ? (
                         "Join Session"
                       ) : (
                         <>
                           Join Session <br />
-                          {sessionId}
+                          {sessionIds}
                         </>
                       )}
                     </button>

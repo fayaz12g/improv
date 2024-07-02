@@ -8,6 +8,7 @@ import HostScreen from './HostScreen';
 import titleTheme from './sound/theme.m4a';
 import speakingTheme from './sound/speaking.m4a';
 import guessingTheme from './sound/guessing.m4a';
+import finishTheme from './sound/finish.m4a';
 import BackgroundMusic from './BackgroundMusic';
 
 function App() {
@@ -249,8 +250,9 @@ function App() {
     };
     
     const joinSession = (clickedSessionId) => {
-        if (socket && playerName) {
-            socket.emit('joinSession', { clickedSessionId, playerName });
+        setSessionId(clickedSessionId);
+        if (socket && sessionId && playerName) {
+            socket.emit('joinSession', { sessionId, playerName });
             setJoinedSession(true);
             sessionStorage.setItem("playerId", socket.id);
         }
@@ -336,8 +338,9 @@ function App() {
 
   return (
   <div className="App">
-        <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} isPlaying={isEndScene}/>
-        <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
+        <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={16} isPlaying={isEndScene}/>
+        <BackgroundMusic audioSrc={finishTheme} loopStart={0} loopEnd={8} isPlaying={isEndGame}/>
+        <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
         <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} isPlaying={!gameStarted} />
         {!socket ? (
             <div>
