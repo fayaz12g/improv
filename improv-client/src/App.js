@@ -6,6 +6,8 @@ import titleImage from './title.png';
 import PlayerScreen from './PlayerScreen';
 import HostScreen from './HostScreen';
 import titleTheme from './sound/theme.m4a';
+import speakingTheme from './sound/speaking.m4a';
+import guessingTheme from './sound/guessing.m4a';
 import BackgroundMusic from './BackgroundMusic';
 
 function App() {
@@ -296,6 +298,11 @@ function App() {
         sessionList={sessionList}
         leaderboard={leaderboard}
         removePlayer={removePlayer}
+        titleTheme={titleTheme}
+        BackgroundMusic={BackgroundMusic}
+        isEndScene={isEndScene}
+        speakingTheme={speakingTheme}
+        guessingTheme={guessingTheme}
       />
     );
 
@@ -319,6 +326,10 @@ function App() {
         sessionList={sessionList}
         leaderboard={leaderboard}
         kicked={kicked}
+        titleTheme={titleTheme}
+        BackgroundMusic={BackgroundMusic}
+        speakingTheme={speakingTheme}
+        guessingTheme={guessingTheme}
       />
     );
 
@@ -326,7 +337,7 @@ function App() {
   <div className="App">
         {!socket ? (
             <div>
-                <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.5} />
+                <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} />
                 <div className="centered-image-container">
                     <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
                 </div>

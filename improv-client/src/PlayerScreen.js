@@ -19,6 +19,10 @@ const PlayerScreen = ({
   sessionList,
   leaderboard,
   kicked,
+  titleTheme,
+  BackgroundMusic,
+  speakingTheme,
+  guessingTheme,
 }) => {
   const [noName, setNoName] = useState(false);
 

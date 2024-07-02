@@ -14,7 +14,12 @@ const HostScreen = ({
   currentRound,
   sessionList,
   leaderboard,
-  removePlayer
+  removePlayer,
+  titleTheme,
+  BackgroundMusic,
+  isEndScene,
+  speakingTheme,
+  guessingTheme,
 }) => {
   const handleRemovePlayer = (playerToRemove) => {
     removePlayer(playerToRemove)
@@ -72,9 +77,26 @@ const HostScreen = ({
             </div>
           )}
         </div>
-      ) : (
+      ) : !isEndScene ? (
         <div>
+          <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} />
           <h3>Round: {currentRound}/{rounds}</h3>
+          <h3>Someone is talking!</h3>
+          <h4>Leaderboard:</h4>
+          <ul>
+            {Object.entries(leaderboard)
+              .sort(([, scoreA], [, scoreB]) => scoreB - scoreA)
+              .map(([name, score]) => (
+                <li key={name}>{name}: {score}</li>
+              ))}
+          </ul>
+        </div>
+      )
+      : (
+        <div>
+          <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={12} />
+          <h3>Round: {currentRound}/{rounds}</h3>
+          <h3>The Guesser is Guessing</h3>
           <h4>Leaderboard:</h4>
           <ul>
             {Object.entries(leaderboard)
