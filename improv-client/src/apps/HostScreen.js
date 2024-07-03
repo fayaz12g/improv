@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AnimatedTitle from './AnimatedTitle';
+import SoundEffect from './apps/SoundEffect';
 
 const HostScreen = ({
   socket,
@@ -24,6 +25,7 @@ const HostScreen = ({
   gameMode,
   setGameMode,
   currentLine,
+  isEndGame,
 }) => {
 
   const handleRemovePlayer = (playerToRemove) => {
@@ -70,6 +72,7 @@ const HostScreen = ({
         <button onClick={createSession}>Create Session</button>
       ) : !gameStarted ? (
         <div>
+          {isEndGame && <SoundEffect audioSrc={finishTheme}/>}
           <h3>Session Number: {sessionId}</h3>
           <h4>Players:</h4>
           <ul>

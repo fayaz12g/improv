@@ -165,6 +165,7 @@ function App() {
         
 
         socket.on('endGame', () => {
+            setGameStarted(false);
             setIsEndGame(true);
         });
         socket.on('reconnect', ({name, sessionId, players}) => {
@@ -312,6 +313,7 @@ function App() {
         gameMode={gameMode}
         setGameMode={setGameMode}
         currentLine={currentLine}
+        isEndGame={isEndGame}
       />
     );
 
@@ -347,7 +349,7 @@ function App() {
     <div className="App">
     {/* Background music components */}
     <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={16} isPlaying={isEndScene}/>
-    <BackgroundMusic audioSrc={finishTheme} loopStart={0} loopEnd={8} isPlaying={isEndGame}/>
+    {/* <BackgroundMusic audioSrc={finishTheme} loopStart={0} loopEnd={8} isPlaying={isEndGame}/> */}
     <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
     <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} isPlaying={!gameStarted} />
     
