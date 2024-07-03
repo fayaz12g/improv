@@ -19,6 +19,7 @@ app.use(express.static('build'));
 
 let sessions = {};
 let currentSession = 0;
+let guesses = 0;
 
 // Load scripts from JSON file
 const scripts = JSON.parse(fs.readFileSync('./scripts.json', 'utf8'));
@@ -213,14 +214,30 @@ io.on('connection', (socket) => {
             console.log(`The Adlibber (${adlibber.name}) has fooled ${socket.id}.`);
         }
         
-        // Check if all rounds are completed
-        if (session.currentRound >= session.rounds) {
-            console.log('Game has ended');
-            io.to(sessionId).emit('endGame');
-        } else {
-            // Start next round
-            startRound(sessionId);
+        if (session.gameMode === 'freeforall') {
+            if (guesses >= 4) {
+                guesses++;
+                // Check if all rounds are completed
+                if (session.currentRound >= session.rounds) {
+                    console.log('Game has ended');
+                    io.to(sessionId).emit('endGame');
+                } else {
+                    // Start next round
+                    startRound(sessionId);
+                }
+            }
+
         }
+        else {
+            // Check if all rounds are completed
+            if (session.currentRound >= session.rounds) {
+                console.log('Game has ended');
+                io.to(sessionId).emit('endGame');
+            } else {
+                // Start next round
+                startRound(sessionId);
+            }
+    }
     });
         
 
