@@ -13,14 +13,9 @@ const HostScreen = ({
   setRounds,
   startGame,
   currentRound,
-  sessionList,
   leaderboard,
   removePlayer,
-  titleTheme,
-  BackgroundMusic,
   isEndScene,
-  speakingTheme,
-  guessingTheme,
   gameMode,
   setGameMode,
   currentLine,
@@ -108,7 +103,7 @@ const HostScreen = ({
           </div>
         </div>
       ) : !isEndScene ? (
-        <div>
+        <div className="game-content">
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>{currentLine?.text}</h3>
           <h4>Leaderboard:</h4>
@@ -121,7 +116,7 @@ const HostScreen = ({
           </ul>
         </div>
       ) : (
-        <div>
+        <div className="game-content">
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>The Guesser is Guessing</h3>
           <h4>Leaderboard:</h4>
