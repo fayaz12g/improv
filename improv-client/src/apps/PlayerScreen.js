@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import SoundEffect from '../apps/SoundEffect';
+import finishTheme from '../sound/finish.m4a';
 
 const PlayerScreen = ({
   isEndGame,
@@ -163,6 +165,7 @@ const PlayerScreen = ({
       </div>
     ) : (
       <div>
+        <SoundEffect audioSrc={finishTheme}/>
         <h3>Game Results</h3>
         <ul>
           {Object.entries(leaderboard).map(([name, score]) => (

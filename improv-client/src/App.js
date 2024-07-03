@@ -10,6 +10,7 @@ import guessingTheme from './sound/guessing.m4a';
 import finishTheme from './sound/finish.m4a';
 import BackgroundMusic from './apps/BackgroundMusic';
 import AnimatedTitle from './apps/AnimatedTitle';
+import SoundEffect from './apps/SoundEffect';
 
 function App() {
     const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
