@@ -6,11 +6,6 @@ import eyes from "../image/eyes/eyes.png";
 import eyesLeft from "../image/eyes/eyesleft.png";
 import eyesRight from "../image/eyes/eyesright.png";
 
-const colors = [
-  'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet',
-  'cyan', 'magenta', 'lime', 'pink', 'teal', 'lavender', 'brown'
-];
-
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
@@ -22,6 +17,11 @@ const bounce = keyframes`
     transform: translateY(-15px);
   }
 `;
+
+const colors = [
+  'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet',
+  'cyan', 'magenta', 'lime', 'pink', 'teal', 'lavender', 'brown'
+];
 
 const TitleChar = styled(animated.span)`
   display: inline-block;
@@ -85,41 +85,56 @@ const TitleScreen = () => {
     };
   }, []);
 
-  const titleLetters = "IMPROVIMANIA";
+// In your component
+const titleLetters = "IMPROViMANIA";
 
-  // Create individual useSpring hooks for each letter
-  const springProps = titleLetters.split('').map((_, index) => 
-    useSpring({
-      from: { transform: "scale(0) rotate(-180deg)" },
-      to: { transform: "scale(1) rotate(0deg)" },
-      config: config.wobbly,
-      delay: index * 100
-    })
+// Create an array of indices
+const indices = [...Array(titleLetters.length).keys()];
+
+// Create a new component for each letter
+const AnimatedLetter = ({ char, index, color, shade, bounce }) => {
+  const springProps = useSpring({
+    from: { transform: "scale(0) rotate(-180deg)" },
+    to: { transform: "scale(1) rotate(0deg)" },
+    config: config.wobbly,
+    delay: index * 100
+  });
+
+  return (
+    <TitleChar
+      style={springProps}
+      color={color}
+      shade={shade}
+      bounce={bounce}
+    >
+      {char}
+    </TitleChar>
   );
+};
 
-  const animatedTitle = useMemo(() => {
-    return titleLetters.split('').map((char, index) => {
-      const isBouncing = bouncingLetters.has(index);
-      const gradientColors = {
-        color: colors[index % colors.length],
-        shade: `${colors[index % colors.length]}80`
-      };
 
-      return (
-        <TitleChar
-          key={index}
-          style={springProps[index]}
-          {...gradientColors}
-          bounce={isBouncing}
-        >
-          {char}
-          {index === 4 && showEyes && (
-            <EyeImage src={eyePosition} alt="eyes" />
-          )}
-        </TitleChar>
-      );
-    });
-  }, [bouncingLetters, showEyes, eyePosition, springProps]);
+const animatedTitle = useMemo(() => {
+  return titleLetters.split('').map((char, index) => {
+    const isBouncing = bouncingLetters.has(index);
+    const gradientColors = {
+      color: colors[index % colors.length],
+      shade: `${colors[index % colors.length]}80`
+    };
+
+    return (
+      <AnimatedLetter
+        key={index}
+        char={char}
+        index={index}
+        {...gradientColors}
+        bounce={isBouncing}
+      />
+    );
+  });
+}, [bouncingLetters, colors]);
+
+
+
 
   return (
     <div className="titleContainer">
