@@ -123,7 +123,9 @@ io.on('connection', (socket) => {
             roles: {},
             currentSpeaker: null,
             currentRound: 0,
-            rounds: 0
+            rounds: 0,
+            gameMode: 'standard', // 'classic' or 'freeforall'
+            originalRoles: {} // Store original roles for freeforall mode
         };
         sessions[shortSessionId].hostSocket = socket.id;
         socket.join(shortSessionId);
@@ -166,16 +168,19 @@ io.on('connection', (socket) => {
         }
       });
 
-    socket.on('startGame', ({ sessionId, rounds }) => {
-        console.log(`Starting game for session ${sessionId} with ${rounds} rounds`);
+    // Server-side update for the startGame event handler
+    socket.on('startGame', ({ sessionId, rounds, gameMode }) => {
+        console.log(`Starting game for session ${sessionId} with ${rounds} rounds in ${gameMode} mode`);
         if (sessions[sessionId] && sessions[sessionId].players.length === 4) {
             sessions[sessionId].rounds = rounds; // Set total rounds
             sessions[sessionId].currentRound = 0; // Initialize current round to 0
+            sessions[sessionId].gameMode = gameMode; // Set game mode
             
             // Emit gameStarted event once at the beginning of the game
             io.to(sessionId).emit('gameStarted', { 
                 rounds: sessions[sessionId].rounds,
-                players: sessions[sessionId].players
+                players: sessions[sessionId].players,
+                gameMode: sessions[sessionId].gameMode
             });
             
             startRound(sessionId); // Start the first round
@@ -191,35 +196,33 @@ io.on('connection', (socket) => {
 
     socket.on('guessAdlibber', ({ sessionId, guess }) => {
         const session = sessions[sessionId];
-        const adlibber = session.players.find(player => session.roles[player.socketId] === 'Speaker 1');
+        const roles = session.gameMode === 'freeforall' ? session.originalRoles : session.roles;
+        
+        const adlibber = session.players.find(player => roles[player.socketId] === 'Speaker 1');
         
         if (adlibber.name === guess) {
             // Correct guess
-            const guesser = session.players.find(player => session.roles[player.socketId] === 'Guesser');
+            const guesser = session.players.find(player => player.socketId === socket.id);
             guesser.points += 1;
             io.to(sessionId).emit('updatePoints', { points: { [guesser.name]: guesser.points } });
-            console.log("The Guesser has found the Adlibber.");
-            console.log(guesser.name, "now has", guesser.points, 'points.');
-        }
-        else {
+            console.log(`${guesser.name} has correctly guessed the Adlibber.`);
+        } else {
             // Adlibber wins
             adlibber.points += 1;
             io.to(sessionId).emit('updatePoints', { points: { [adlibber.name]: adlibber.points } });
-            console.log("The Adlibber has fooled the Guesser.");
-            console.log(adlibber.name, "now has", adlibber.points, 'points.');
+            console.log(`The Adlibber (${adlibber.name}) has fooled ${socket.id}.`);
         }
-    
+        
         // Check if all rounds are completed
         if (session.currentRound >= session.rounds) {
             console.log('Game has ended');
-            io.to(sessionId).emit('endGame'); // Signal end of game
+            io.to(sessionId).emit('endGame');
         } else {
-
             // Start next round
             startRound(sessionId);
         }
     });
-    
+        
 
     socket.on('disconnect', () => {
         console.log('Client disconnected:', socket.id);
@@ -361,8 +364,31 @@ function nextLine(sessionId) {
         session.currentLineIndex++;
     } else {
         // End of script
-        io.to(sessionId).emit('endScene');
+        endScene(sessionId);
     }
+}
+
+function endScene(sessionId) {
+    const session = sessions[sessionId];
+    
+    if (session.gameMode === 'freeforall') {
+        // Store original roles before changing them
+        session.originalRoles = {...session.roles};
+        
+        // Change all roles to 'Guesser'
+        for (const socketId in session.roles) {
+            session.roles[socketId] = 'Guesser';
+        }
+        
+        // Emit updated roles
+        io.to(sessionId).emit('roundStarted', {
+            currentRound: session.currentRound,
+            roles: session.roles
+        });
+    }
+    
+    // Emit endScene event
+    io.to(sessionId).emit('endScene');
 }
 
 const PORT = 3000;

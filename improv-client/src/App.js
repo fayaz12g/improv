@@ -28,6 +28,7 @@ function App() {
     const [joinedSession, setJoinedSession] = useState(false);
     const [isEndScene, setIsEndScene] = useState(false);
     const [isEndGame, setIsEndGame] = useState(false);
+    const [gameMode, setGameMode] = useState('classic');
     const [isSpeaker, setIsSpeaker] = useState(false);
     const [connectionError, setConnectionError] = useState(false); 
     const [connectionWaiting, setConnectionWaiting] = useState(false);
@@ -305,6 +306,8 @@ function App() {
         isEndScene={isEndScene}
         speakingTheme={speakingTheme}
         guessingTheme={guessingTheme}
+        gameMode={gameMode}
+        setGameMode={setGameMode}
         currentLine={currentLine}
       />
     );
@@ -344,15 +347,14 @@ function App() {
     <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
     <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} isPlaying={!gameStarted} />
     
-    {/* AnimatedTitle component */}
-    <div className="animated-title-container">
-        <AnimatedTitle />
-    </div>
 
     {/* Main content */}
     <div className="main-content">
         {!socket ? (
             <div>
+                <div className="animated-title-container">
+                    <AnimatedTitle />
+                </div>
                 
                 <div className="centered-image-container">
                     {/* <img src={titleImage} alt="Improvomania Logo" className="centered-image" /> */}

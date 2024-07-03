@@ -1,4 +1,5 @@
 import React from 'react';
+import AnimatedTitle from './AnimatedTitle';
 
 const HostScreen = ({
   socket,
@@ -20,10 +21,16 @@ const HostScreen = ({
   isEndScene,
   speakingTheme,
   guessingTheme,
+  gameMode,
+  setGameMode,
   currentLine,
 }) => {
   const handleRemovePlayer = (playerToRemove) => {
-    removePlayer(playerToRemove)
+    removePlayer(playerToRemove);
+  };
+
+  const toggleGameMode = () => {
+    setGameMode(gameMode === 'classic' ? 'freeforall' : 'classic');
   };
 
   const PlayerListItem = ({ player }) => {
@@ -46,27 +53,36 @@ const HostScreen = ({
     );
   };
 
+  const handleStartGame = () => {
+    if (socket) {
+      socket.emit('startGame', { sessionId, rounds, gameMode });
+    }
+  };
+
   return (
-    <div>
-      <h2>Room Code: {ipAddress}</h2>
+    <div className="host-screen">
+      <div className="animated-title-container">
+        <AnimatedTitle />
+      </div>
+      <h2 className="room-code">Room Code: {ipAddress}</h2>
       {!sessionCreated ? (
         <button onClick={createSession}>Create Session</button>
       ) : !gameStarted ? (
-        <div>
-          <h3>Session Number: {sessionId}</h3>
-          <h4>Players:</h4>
-          <ul>
-            {players.map((player) => (
-              <PlayerListItem key={player.id} player={player} />
-            ))}
-          </ul>
-          {players.length === 4 && (
-            <div>
-                          <p style={{ fontFamily: 'Alloy Ink' }}>
-              {players.length === 4
-                ? "Enter the number of rounds you would like to play:"
-                : "Waiting for 4 players..."}
-            </p>
+        <div className="host-lobby">
+          <div className="left-box">
+            <h3>Session Number: {sessionId}</h3>
+            <h4>Players:</h4>
+            <ul>
+              {players.map((player) => (
+                <PlayerListItem key={player.id} player={player} />
+              ))}
+            </ul>
+          </div>
+          <div className="right-box">
+            <p style={{ fontFamily: 'Alloy Ink' }}>Game Settings:</p>
+            <label>
+              Number of rounds:
+              <br />
               <input
                 type="number"
                 min="1"
@@ -74,13 +90,25 @@ const HostScreen = ({
                 value={rounds}
                 onChange={(e) => setRounds(parseInt(e.target.value))}
               />
-              <button onClick={startGame}>Start Game</button>
-            </div>
-          )}
+            </label>
+            <label>
+              <br />
+              Game Mode:
+              <div className="button-wrapper">
+                <button onClick={toggleGameMode} className="game-mode-button">
+                  {gameMode === 'classic' ? 'Classic' : 'Free for All'}
+                </button>
+              </div>
+            </label>
+          </div>
+          <div className="start-game-container">
+            <button onClick={handleStartGame} disabled={players.length !== 4}>
+              {players.length === 4 ? "Start Game" : "Waiting for 4 players..."}
+            </button>
+          </div>
         </div>
       ) : !isEndScene ? (
         <div>
-          {/* <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={16} /> */}
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>{currentLine?.text}</h3>
           <h4>Leaderboard:</h4>
@@ -92,10 +120,8 @@ const HostScreen = ({
               ))}
           </ul>
         </div>
-      )
-      : (
+      ) : (
         <div>
-          {/* <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={12} isPlaying={!isEndScene}/> */}
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>The Guesser is Guessing</h3>
           <h4>Leaderboard:</h4>
