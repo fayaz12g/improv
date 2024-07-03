@@ -387,12 +387,11 @@ function nextLine(sessionId) {
 
 function endScene(sessionId) {
     const session = sessions[sessionId];
-    const adlibber = session.players.find(player => roles[player.socketId] === 'Speaker 1');
     
     if (session.gameMode === 'freeforall') {
         // Store original roles before changing them
         session.originalRoles = {...session.roles};
-
+        
         // Change all roles except for Speaker 1 to 'Guesser'
         for (const socketId in session.roles) {
             if (session.roles[socketId] !== 'Speaker 1') {
