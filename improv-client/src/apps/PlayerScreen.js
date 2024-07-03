@@ -95,9 +95,9 @@ const PlayerScreen = ({
           <div>
             {playerRole && playerRole.startsWith('Speaker 1') && (
               <>
-                <h3>Your Role: Adlibber</h3>
+                <h3>Guess the Adlibber!</h3>
                 {isEndScene ? (
-                  <div>END SCENE</div>
+                  <div>Try to blend in, make it look like you're picking someone!</div>
                 ) : (
                   <>
                     <div>
