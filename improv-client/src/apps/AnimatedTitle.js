@@ -1,53 +1,137 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState, useMemo } from "react";
+import { useSpring, animated, config } from "react-spring";
+import styled, { keyframes } from "styled-components";
+import "./AnimatedStyle.css";
+import eyes from "../image/eyes/eyes.png";
+import eyesLeft from "../image/eyes/eyesleft.png";
+import eyesRight from "../image/eyes/eyesright.png";
 
-const AnimatedTitle = () => {
-  const [isAnimating, setIsAnimating] = useState(false);
+const colors = [
+  'red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet',
+  'cyan', 'magenta', 'lime', 'pink', 'teal', 'lavender', 'brown'
+];
+
+const bounce = keyframes`
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+`;
+
+const TitleChar = styled(animated.span)`
+  display: inline-block;
+  margin: 0 2px;
+  font-family: 'Alloy Ink', 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+  font-size: 10rem;
+  color: ${(props) => props.color}; 
+  -webkit-text-stroke: 6px white; 
+  position: relative;
+  overflow: hidden; 
+  animation: ${(props) => (props.bounce ? bounce : "none")} 1s infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1; 
+
+  /* Gradient overlay */
+  background: ${(props) => props.color};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+`;
+
+const EyeImage = styled.img`
+  width: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+`;
+
+const TitleScreen = () => {
+  const [bouncingLetters, setBouncingLetters] = useState(new Set());
+  const [showEyes, setShowEyes] = useState(false);
+  const [eyePosition, setEyePosition] = useState(eyes);
+
+  const getRandomInt = (max) => Math.floor(Math.random() * max);
 
   useEffect(() => {
-    setIsAnimating(true);
-    const interval = setInterval(() => {
-      setIsAnimating(prev => !prev);
-    }, 5000);
-    return () => clearInterval(interval);
+    const bounceInterval = setInterval(() => {
+      const newSet = new Set();
+      newSet.add(getRandomInt(11));
+      setBouncingLetters(newSet);
+    }, 2000);
+
+    const eyesInterval = setInterval(() => {
+      setShowEyes(true);
+      setEyePosition(eyes);
+      setTimeout(() => {
+        setEyePosition(eyesLeft);
+        setTimeout(() => {
+          setEyePosition(eyesRight);
+          setTimeout(() => {
+            setShowEyes(false);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 10000);
+
+    return () => {
+      clearInterval(bounceInterval);
+      clearInterval(eyesInterval);
+    };
   }, []);
 
-  const title = "IMPROVIMANIA";
+  const titleLetters = "IMPROVIMANIA";
+
+  // Create individual useSpring hooks for each letter
+  const springProps = titleLetters.split('').map((_, index) => 
+    useSpring({
+      from: { transform: "scale(0) rotate(-180deg)" },
+      to: { transform: "scale(1) rotate(0deg)" },
+      config: config.wobbly,
+      delay: index * 100
+    })
+  );
+
+  const animatedTitle = useMemo(() => {
+    return titleLetters.split('').map((char, index) => {
+      const isBouncing = bouncingLetters.has(index);
+      const gradientColors = {
+        color: colors[index % colors.length],
+        shade: `${colors[index % colors.length]}80`
+      };
+
+      return (
+        <TitleChar
+          key={index}
+          style={springProps[index]}
+          {...gradientColors}
+          bounce={isBouncing}
+        >
+          {char}
+          {index === 4 && showEyes && (
+            <EyeImage src={eyePosition} alt="eyes" />
+          )}
+        </TitleChar>
+      );
+    });
+  }, [bouncingLetters, showEyes, eyePosition, springProps]);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-900">
-      <div className="text-center">
-        <div className="mb-8">
-          {title.split('').map((letter, index) => (
-            <motion.span
-              key={index}
-              className="inline-block text-6xl font-bold text-yellow-400"
-              initial={{ opacity: 0, scale: 0.5, x: -100 }}
-              animate={{
-                opacity: 1,
-                scale: [1, 1.2, 1],
-                x: 0,
-                y: isAnimating ? [0, -20, 0] : 0,
-              }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-                y: {
-                  duration: 0.5,
-                  repeat: Infinity,
-                  repeatDelay: Math.random() * 5 + 5,
-                  ease: "easeInOut"
-                }
-              }}
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </div>
-        <button className="px-6 py-3 bg-yellow-400 text-gray-900 rounded-full text-xl font-semibold hover:bg-yellow-300 transition-colors">
-          Play Now
-        </button>
-      </div>
+    <div className="titleContainer">
+      <div className="animatedTitle">{animatedTitle}</div>
+    </div>
+  );
+};
+
+const AnimatedTitle = () => {
+  return (
+    <div className="AnimatedTitle">
+      <TitleScreen />
     </div>
   );
 };

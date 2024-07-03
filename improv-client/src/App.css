@@ -323,6 +323,8 @@ body.dark .smalltext {
   color: var(--toggle-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background-color 0.9s ease, color 0.9s ease;
+  z-index: 15;
+
 }
 
 body.light {
@@ -347,4 +349,18 @@ body.dark {
 .scale-200 {
   transform: scale(2);
   transform-origin: 0 0;
+}
+
+.animated-title-container {
+  position: center; /* Change this Line to absolute to make it outside the box */
+  top: -200px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  /* overflow: visible; */
+}
+
+.main-content {
+  z-index: 5;
+  /* Add any other styling you need */
 }

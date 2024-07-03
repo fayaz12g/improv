@@ -9,6 +9,7 @@ import speakingTheme from './sound/speaking.m4a';
 import guessingTheme from './sound/guessing.m4a';
 import finishTheme from './sound/finish.m4a';
 import BackgroundMusic from './apps/BackgroundMusic';
+import AnimatedTitle from './apps/AnimatedTitle';
 
 function App() {
     const [ipAddress, setIpAddress] = useState(sessionStorage.getItem('ipAddress'));
@@ -336,21 +337,31 @@ function App() {
     );
 
   return (
-  <div className="App">
-        <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={16} isPlaying={isEndScene}/>
-        <BackgroundMusic audioSrc={finishTheme} loopStart={0} loopEnd={8} isPlaying={isEndGame}/>
-        <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
-        <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} isPlaying={!gameStarted} />
+    <div className="App">
+    {/* Background music components */}
+    <BackgroundMusic audioSrc={guessingTheme} loopStart={0} loopEnd={16} isPlaying={isEndScene}/>
+    <BackgroundMusic audioSrc={finishTheme} loopStart={0} loopEnd={8} isPlaying={isEndGame}/>
+    <BackgroundMusic audioSrc={speakingTheme} loopStart={0} loopEnd={12} isPlaying={gameStarted && !isEndScene}/>
+    <BackgroundMusic audioSrc={titleTheme} loopStart={24} loopEnd={71.9} isPlaying={!gameStarted} />
+    
+    {/* AnimatedTitle component */}
+    <div className="animated-title-container">
+        <AnimatedTitle />
+    </div>
+
+    {/* Main content */}
+    <div className="main-content">
         {!socket ? (
             <div>
+                
                 <div className="centered-image-container">
-                    <img src={titleImage} alt="Improvomania Logo" className="centered-image" />
+                    {/* <img src={titleImage} alt="Improvomania Logo" className="centered-image" /> */}
                 </div>
-                {!connectionWaiting && !kicked && <h2>Room Code:</h2>}
+                {/* {!connectionWaiting && !kicked && <h2>Room Code:</h2>} */}
                 {kicked && <h2 style={{ color: 'red' }}>You have been kicked by the host.</h2>}
                 {!connectionWaiting && !kicked && <input type="text" 
                 value={ipAddress} 
-                placeholder="Or the Server IP"
+                placeholder="Enter the room code"
                 onChange={(e) => setIpAddress(e.target.value)} />}
                 {!connectionWaiting && !kicked && <button onClick={connectToServer}>Connect</button>}
                 {connectionWaiting && <h2>Attempting connection, please wait.</h2>}
@@ -376,6 +387,7 @@ function App() {
             Client Version: {clientVersion}
             <br />
             Server Version: {serverVersion}
+        </div>
         </div>
         </div>
     );
