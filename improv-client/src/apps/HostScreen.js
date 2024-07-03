@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AnimatedTitle from './AnimatedTitle';
 
 const HostScreen = ({
@@ -13,15 +13,21 @@ const HostScreen = ({
   setRounds,
   startGame,
   currentRound,
+  sessionList,
   leaderboard,
   removePlayer,
+  titleTheme,
+  BackgroundMusic,
   isEndScene,
+  speakingTheme,
+  guessingTheme,
   gameMode,
   setGameMode,
   currentLine,
 }) => {
+
   const handleRemovePlayer = (playerToRemove) => {
-    removePlayer(playerToRemove);
+    removePlayer(playerToRemove)
   };
 
   const toggleGameMode = () => {
@@ -55,29 +61,29 @@ const HostScreen = ({
   };
 
   return (
-    <div className="host-screen">
+    <div>
       <div className="animated-title-container">
         <AnimatedTitle />
       </div>
-      <h2 className="room-code">Room Code: {ipAddress}</h2>
+      <h2>Room Code: {ipAddress}</h2>
       {!sessionCreated ? (
         <button onClick={createSession}>Create Session</button>
       ) : !gameStarted ? (
-        <div className="host-lobby">
-          <div className="left-box">
-            <h3>Session Number: {sessionId}</h3>
-            <h4>Players:</h4>
-            <ul>
-              {players.map((player) => (
-                <PlayerListItem key={player.id} player={player} />
-              ))}
-            </ul>
-          </div>
-          <div className="right-box">
-            <p style={{ fontFamily: 'Alloy Ink' }}>Game Settings:</p>
+        <div>
+          <h3>Session Number: {sessionId}</h3>
+          <h4>Players:</h4>
+          <ul>
+            {players.map((player) => (
+              <PlayerListItem key={player.id} player={player} />
+            ))}
+          </ul>
+          <div>
+            <p style={{ fontFamily: 'Alloy Ink' }}>
+              Game Settings:
+            </p>
             <label>
               Number of rounds:
-              <br />
+                            <br />
               <input
                 type="number"
                 min="1"
@@ -90,20 +96,19 @@ const HostScreen = ({
               <br />
               Game Mode:
               <div className="button-wrapper">
-                <button onClick={toggleGameMode} className="game-mode-button">
+                <game-mode-button onClick={toggleGameMode} className="game-mode-button">
                   {gameMode === 'classic' ? 'Classic' : 'Free for All'}
-                </button>
+                </game-mode-button>
               </div>
+              <br />
             </label>
-          </div>
-          <div className="start-game-container">
             <button onClick={handleStartGame} disabled={players.length !== 4}>
               {players.length === 4 ? "Start Game" : "Waiting for 4 players..."}
             </button>
           </div>
         </div>
       ) : !isEndScene ? (
-        <div className="game-content">
+        <div>
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>{currentLine?.text}</h3>
           <h4>Leaderboard:</h4>
@@ -116,7 +121,7 @@ const HostScreen = ({
           </ul>
         </div>
       ) : (
-        <div className="game-content">
+        <div>
           <h3>Round: {currentRound}/{rounds}</h3>
           <h3>The Guesser is Guessing</h3>
           <h4>Leaderboard:</h4>

@@ -207,36 +207,6 @@ input[type="text"], input[type="number"] {
   font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
 }
 
-/* Buttons */
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
-  cursor: pointer;
-  transition: background-color 0.9s ease, color 0.9s ease;
-}
-
-body.light button {
-  background-color: #FFB347; /* Light orange */
-  color: #000000;
-}
-
-body.light button:hover {
-  background-color: #FFA500; /* Darker orange */
-}
-
-body.dark button {
-  background-color: #8B4500; /* Dark orange */
-  color: #FFFFFF;
-}
-
-body.dark button:hover {
-  background-color: #CD853F; /* Lighter brown */
-}
-
 /* Lists */
 ul {
   list-style: none;
@@ -423,17 +393,94 @@ body.dark {
   }
 }
 
-.button-wrapper {
-  margin-top: 10px;
-}
-
-.game-mode-button {
-  width: 100%;
-}
-
 /* Ensure the theme toggle and version text are visible */
 .theme-toggle,
 .version-text {
   position: fixed;
   z-index: 1000;
+}
+
+/* Buttons */
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Patrick Hand', 'Comic Sans MS', cursive, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.9s ease, color 0.9s ease;
+}
+
+body.light button {
+  background-color: #FFB347; /* Light orange */
+  color: #000000;
+}
+
+body.light button:hover {
+  background-color: #FFA500; /* Darker orange */
+}
+
+body.dark button {
+  background-color: #8B4500; /* Dark orange */
+  color: #FFFFFF;
+}
+
+body.dark button:hover {
+  background-color: #CD853F; /* Lighter brown */
+}
+
+.button-wrapper {
+  margin-top: 10px;
+}
+
+
+/* Common styles for the button */
+game-mode-button {
+  position: relative;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: inherit;
+}
+
+game-mode-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  z-index: -1;
+  background-size: 200% 200%;
+  animation: swirl 3s linear infinite;
+  transition: background 0.9s ease;
+}
+
+/* Light theme */
+body.light game-mode-button {
+  color: #000000;
+}
+
+body.light game-mode-button::before {
+  background: radial-gradient(circle, #ff9a9e, #fad0c4, #ff9a9e);
+}
+
+/* Dark theme */
+body.dark game-mode-button {
+  color: #ffffff;
+}
+
+body.dark game-mode-button::before {
+  background: radial-gradient(circle, #8B0000, #ff9a9e, #8B0000);
+}
+
+/* Animation keyframes */
+@keyframes swirl {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
