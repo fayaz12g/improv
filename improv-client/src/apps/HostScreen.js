@@ -74,7 +74,7 @@ const HostScreen = ({
       ) : !gameStarted ? (
         <div>
           {isEndGame && <SoundEffect audioSrc={finishTheme}/>}
-          <h3>Session Number: {sessionId}</h3>
+          <h3>Session {sessionId}</h3>
           <h4>Players:</h4>
           <ul>
             {players.map((player) => (
