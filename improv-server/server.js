@@ -216,7 +216,7 @@ io.on('connection', (socket) => {
         
         if (session.gameMode === 'freeforall') {
             guesses++;
-            if (guesses >= 4) {
+            if (guesses >= 3) {
                 // Check if all rounds are completed
                 if (session.currentRound >= session.rounds) {
                     console.log('Game has ended');
@@ -391,7 +391,7 @@ function endScene(sessionId) {
     if (session.gameMode === 'freeforall') {
         // Store original roles before changing them
         session.originalRoles = {...session.roles};
-        
+
         // Change all roles except for Speaker 1 to 'Guesser'
         for (const socketId in session.roles) {
             if (session.roles[socketId] !== 'Speaker 1') {

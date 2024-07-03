@@ -139,8 +139,9 @@ const PlayerScreen = ({
             {playerRole === 'Guesser' &&
               (isEndScene ? (
                 <div>
-                    <h3>Your Role: Guesser</h3>
-                    <p>Guess who the Adlibber was:</p>
+                    <h3>Guess the Adlibber!</h3>
+                    {!sentGuess && <p>Choose the person you think was making up their lines:</p>}
+                    {sentGuess && <p>Your guess was sent.</p>}
                     {!sentGuess && 
                     players.map((player, index) => (
                         player.name !== playerName && (
