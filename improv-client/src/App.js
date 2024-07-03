@@ -22,6 +22,7 @@ function App() {
     const [rounds, setRounds] = useState(1);
     const [gameStarted, setGameStarted] = useState(false);
     const [currentLine, setCurrentLine] = useState(null);
+    const [sentGuess, setSentGuess] = useState(false);
     const [currentRound, setCurrentRound] = useState(1);
     const [playerRole, setPlayerRole] = useState(null);
     const [leaderboard, setLeaderboard] = useState({});
@@ -130,6 +131,7 @@ function App() {
             setIsEndScene(false);
             setIsSpeaker(false);
             setCurrentLine(null);
+            setSentGuess(false)
         });
 
         socket.on('updateLine', ({ line, isAdlib, isSpeaker }) => {
@@ -275,6 +277,7 @@ function App() {
     };
 
     const guessAdlibber = (guess) => {
+        setSentGuess(true)
         if (socket) {
             socket.emit('guessAdlibber', { sessionId: sessionId.toUpperCase(), guess });
         }
@@ -336,6 +339,7 @@ function App() {
         BackgroundMusic={BackgroundMusic}
         speakingTheme={speakingTheme}
         guessingTheme={guessingTheme}
+        sentGuess={sentGuess}
       />
     );
 

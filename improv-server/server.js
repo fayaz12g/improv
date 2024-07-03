@@ -215,8 +215,8 @@ io.on('connection', (socket) => {
         }
         
         if (session.gameMode === 'freeforall') {
+            guesses++;
             if (guesses >= 4) {
-                guesses++;
                 // Check if all rounds are completed
                 if (session.currentRound >= session.rounds) {
                     console.log('Game has ended');

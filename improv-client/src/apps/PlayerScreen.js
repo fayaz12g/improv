@@ -23,6 +23,7 @@ const PlayerScreen = ({
   BackgroundMusic,
   speakingTheme,
   guessingTheme,
+  sentGuess,
 }) => {
   const [noName, setNoName] = useState(false);
 
@@ -138,9 +139,10 @@ const PlayerScreen = ({
                 <div>
                     <h3>Your Role: Guesser</h3>
                     <p>Guess who the Adlibber was:</p>
-                    {players.map((player, index) => (
+                    {!sentGuess && 
+                    players.map((player, index) => (
                         player.name !== playerName && (
-                            <button
+                          <button
                                 key={index}
                                 onClick={() => guessAdlibber(player.name)}
                             >
