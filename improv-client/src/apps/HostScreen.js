@@ -66,7 +66,7 @@ const HostScreen = ({
   return (
     <div>
       <div className="animated-title-container">
-        <AnimatedTitle />
+        <AnimatedTitle title="fayaz.one/improv" />
       </div>
       <h2>Room Code: {ipAddress}</h2>
       {!sessionCreated ? (

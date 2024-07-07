@@ -63,7 +63,7 @@ const DiscoBall = styled.img`
   cursor: pointer;
 `;
 
-const TitleScreen = () => {
+const TitleScreen = ({ title = "IMPROViMANIA" }) => {
   const [bouncingLetters, setBouncingLetters] = useState(new Set());
   const [showEyes, setShowEyes] = useState(false);
   const [eyePosition, setEyePosition] = useState(eyes);
@@ -75,11 +75,11 @@ const TitleScreen = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitialAnimationComplete(true);
-    }, titleLetters.length * 100 + 500);
+    }, title.length * 100 + 500);
 
     const bounceInterval = setInterval(() => {
       const newSet = new Set();
-      newSet.add(getRandomInt(11));
+      newSet.add(getRandomInt(title.length));
       setBouncingLetters(newSet);
     }, 2000);
 
@@ -102,9 +102,8 @@ const TitleScreen = () => {
       clearInterval(bounceInterval);
       clearInterval(eyesInterval);
     };
-  }, []);
+  }, [title]);
 
-  const titleLetters = "IMPROViMANIA";
 
   const AnimatedLetter = ({ char, index, color, shade, bounce }) => {
     const springProps = useSpring({
@@ -139,7 +138,7 @@ const TitleScreen = () => {
   };
 
   const animatedTitle = useMemo(() => {
-    return titleLetters.split('').map((char, index) => {
+    return title.split('').map((char, index) => {
       const isBouncing = bouncingLetters.has(index);
       const gradientColors = {
         color: partyMode ? colors[getRandomInt(colors.length)] : colors[index % colors.length],
@@ -156,7 +155,7 @@ const TitleScreen = () => {
         />
       );
     });
-  }, [bouncingLetters, initialAnimationComplete, partyMode]);
+  }, [bouncingLetters, initialAnimationComplete, partyMode, title]);
 
   return (
     <div className="titleContainer">
@@ -165,10 +164,10 @@ const TitleScreen = () => {
   );
 };
 
-const AnimatedTitle = () => {
+const AnimatedTitle = ({ title = "IMPROViMANIA" }) => {
   return (
     <div className="AnimatedTitle">
-      <TitleScreen />
+      <TitleScreen title={title} />
     </div>
   );
 };
