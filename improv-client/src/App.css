@@ -427,7 +427,7 @@ body.dark button {
 }
 
 body.dark button:hover {
-  background-color: #CD853F; /* Lighter brown */
+  background-color: #046788; /* darker blue */
 }
 
 .button-wrapper {
