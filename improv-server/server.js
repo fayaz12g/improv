@@ -82,7 +82,7 @@ io.on('connection', (socket) => {
         let shortenedIP = serverIpAddress
         const octets = serverIpAddress.split('.'); // Split the IP address into octets
         if (octets[0] === '192' && octets[1] === '168') {
-        if (octets[2] === '86') {
+        if (octets[2] === '1') {
             shortenedIP = octets[3]; // Only the fourth octet
         } else {
             shortenedIP = `${octets[2]}.${octets[3]}`; // The last two octets
@@ -256,6 +256,7 @@ function shuffle(array) {
 }
 
 function startRound(sessionId) {
+    guesses = 0;
     const session = sessions[sessionId];
     session.currentRound++;
     console.log('Beginning round', session.currentRound, '/', session.rounds);

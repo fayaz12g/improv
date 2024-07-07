@@ -101,6 +101,7 @@ function App() {
               setRounds(rounds);
               setGameStarted(true);
               setCurrentRound(currentround);
+              setIsSpeaker(false);
               
               if (Object.keys(leaderboard).length === 0) {
                   console.log("Creating new leaderboard");
@@ -210,7 +211,7 @@ function App() {
       
         if (octets.length === 1) {
           // If only one octet
-          fullIpAddress = `192.168.86.${octets[0]}`;
+          fullIpAddress = `192.168.1.${octets[0]}`;
         } else if (octets.length === 2) {
           // If two octets
           fullIpAddress = `192.168.${octets[0]}.${octets[1]}`;

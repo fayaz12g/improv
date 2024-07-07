@@ -42,15 +42,15 @@ const PlayerScreen = ({
         <div>
           {!joinedSession ? (
             <>
-              <h2>Join a Game</h2>
-              <div>
+              {(sessionList.length > 0) && <h2>Join a Game</h2>}
+              {(sessionList.length > 0) && <div>
                 <input
                   type="text"
                   value={playerName}
                   onChange={(e) => setPlayerName(e.target.value)}
                   placeholder="Enter Your Name"
                 />
-              </div>
+              </div>}
               <div>
               {Array.isArray(sessionList) && sessionList.length > 0 ? (
                   sessionList.map((sessionIds) => (
