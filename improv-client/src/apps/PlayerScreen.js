@@ -101,7 +101,7 @@ const PlayerScreen = ({
                 ) : (
                   <>
                     <div>
-                      {currentLine?.text}
+                      <b>{currentLine?.text}</b>
                     </div>
                     {currentLine?.isAdlib && (
                       <p className="smalltext">(It's your line!)</p>
